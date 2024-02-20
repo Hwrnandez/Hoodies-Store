@@ -1,0 +1,11 @@
+.login,
+.image {
+  min-height: 100vh;
+}
+
+.bg-image {
+  background-image: url(/recursos/img/imagen7login.jpg);
+  background-size: cover;
+  background-position: center center;}
+
+  .text{color: rgb(0, 0, 0);}
