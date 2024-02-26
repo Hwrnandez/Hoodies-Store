@@ -9,3 +9,16 @@
   background-position: center center;}
 
   .text{color: rgb(0, 0, 0);}
+
+  .BIENVENID  {
+  margin-left: 810px;
+  margin-top: 50px;
+  box-shadow: black 100px;
+  font-size: 5ch;
+  }
+
+  #hora{
+  margin-left:870px;
+  margin-top: 20px;
+  font-size: 5ch;
+  }
