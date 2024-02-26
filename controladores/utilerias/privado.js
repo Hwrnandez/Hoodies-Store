@@ -15,8 +15,7 @@ header.innerHTML =`
 </li>
 </ul>`
 
-const fooder = document.querySelector('fooder')
-header.innerHTML =``
+
 function myFunc()  {
 	var now = new Date();
 	var time = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
