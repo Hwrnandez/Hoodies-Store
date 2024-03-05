@@ -192,8 +192,28 @@ const openReport = () => {
 
 function alerta(){
     Swal.fire({
-        title: "Good job!",
-        text: "You clicked the button!",
+        title: "¡Se ha agregado con exito!",
+        text: "¡Felicidades!",
         icon: "success"
       });
 }
+
+function alertaeliminar(){
+    Swal.fire({
+        title: "¿Estas seguro?",
+        text: "Al hacer esto eliminaras el registro",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Eliminar"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            title: "¡Eliminado!",
+            text: "Has borrado el registro con exito.",
+            icon: "success"
+          });
+        }
+      });
+} 
