@@ -192,7 +192,7 @@ const openReport = () => {
 
 function alerta(){
     Swal.fire({
-        title: "¡Se ha agregado con exito!",
+        title: "¡Exito!",
         text: "¡Felicidades!",
         icon: "success"
       });
