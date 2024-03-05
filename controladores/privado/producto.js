@@ -121,6 +121,7 @@ const openCreate = () => {
     fillSelect(CATEGORIA_API, 'readAll', 'categoriaProducto');
 }
 
+
 /*
 *   Función asíncrona para preparar el formulario al momento de actualizar un registro.
 *   Parámetros: id (identificador del registro seleccionado).

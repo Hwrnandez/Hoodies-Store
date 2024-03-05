@@ -29,3 +29,12 @@
   box-shadow: black 100px;
   font-size: 5ch;
  }
+
+ .img_producto{
+  width: 100px;
+  height: 100px;
+ }
+
+ .alinear{
+text-align: justify;
+ }
