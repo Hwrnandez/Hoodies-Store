@@ -190,5 +190,10 @@ const openReport = () => {
     window.open(PATH.href);
 }
 
-
-
+function alerta(){
+    Swal.fire({
+        title: "Good job!",
+        text: "You clicked the button!",
+        icon: "success"
+      });
+}
