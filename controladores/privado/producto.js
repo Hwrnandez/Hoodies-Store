@@ -12,11 +12,9 @@ const SAVE_MODAL = new bootstrap.Modal('#saveModal'),
 // Constantes para establecer los elementos del formulario de guardar.
 const SAVE_FORM = document.getElementById('saveForm'),
     ID_PRODUCTO = document.getElementById('idProducto'),
-    NOMBRE_PRODUCTO = document.getElementById('nombreProducto'),
+    NOMBRE_MARCA_PRODUCTO = document.getElementById('nombreProducto'),
     DESCRIPCION_PRODUCTO = document.getElementById('descripcionProducto'),
-    PRECIO_PRODUCTO = document.getElementById('precioProducto'),
-    EXISTENCIAS_PRODUCTO = document.getElementById('existenciasProducto'),
-    ESTADO_PRODUCTO = document.getElementById('estadoProducto');
+    PRECIO_PRODUCTO = document.getElementById('precioProducto');
 
 // Método del evento para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
@@ -85,8 +83,8 @@ const fillTable = async (form = null) => {
                 <tr>
                     <td><img src="${SERVER_URL}images/productos/${row.imagen_producto}" height="50"></td>
                     <td>${row.nombre_producto}</td>
+                    <td>${row.descripcion_producto}</td>
                     <td>${row.precio_producto}</td>
-                    <td>${row.nombre_categoria}</td>
                     <td><i class="${icon}"></i></td>
                     <td>
                         <button type="button" class="btn btn-info" onclick="openUpdate(${row.id_producto})">
@@ -96,8 +94,7 @@ const fillTable = async (form = null) => {
                             <i class="bi bi-trash-fill"></i>
                         </button>
                     </td>
-                </tr>
-            `;
+                </tr>`;
         });
         // Se muestra un mensaje de acuerdo con el resultado.
         ROWS_FOUND.textContent = DATA.message;
@@ -128,16 +125,17 @@ const openCreate = () => {
 *   Retorno: ninguno.
 */
 const openUpdate = async (id) => {
+    // Se muestra la caja de diálogo con su título.
+    SAVE_MODAL.show();
+    MODAL_TITLE.textContent = 'Actualizar producto';
     // Se define un objeto con los datos del registro seleccionado.
-    const FORM = new FormData();
+    /*const FORM = new FormData();
     FORM.append('idProducto', id);
     // Petición para obtener los datos del registro solicitado.
     const DATA = await fetchData(PRODUCTO_API, 'readOne', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (DATA.status) {
-        // Se muestra la caja de diálogo con su título.
-        SAVE_MODAL.show();
-        MODAL_TITLE.textContent = 'Actualizar producto';
+        
         // Se prepara el formulario.
         SAVE_FORM.reset();
         EXISTENCIAS_PRODUCTO.disabled = true;
@@ -147,12 +145,10 @@ const openUpdate = async (id) => {
         NOMBRE_PRODUCTO.value = ROW.nombre_producto;
         DESCRIPCION_PRODUCTO.value = ROW.descripcion_producto;
         PRECIO_PRODUCTO.value = ROW.precio_producto;
-        EXISTENCIAS_PRODUCTO.value = ROW.existencias_producto;
-        ESTADO_PRODUCTO.checked = ROW.estado_producto;
         fillSelect(CATEGORIA_API, 'readAll', 'categoriaProducto', ROW.id_categoria);
     } else {
         sweetAlert(2, DATA.error, false);
-    }
+    }*/
 }
 
 /*

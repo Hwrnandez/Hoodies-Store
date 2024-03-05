@@ -22,6 +22,7 @@
 <body>
     <header>
 
+
     </header>
     <hr>
     <!-- Contenido principal del documento -->
@@ -81,14 +82,39 @@
                     <th ><p class="pb-3">Aguacate/Mancare</p></th>
                     <th><p class="pb-1">Color: Verde <br> Talla: L <br> Capucha: si</p></th>
                     <th><p class="pb-3">39.21</p></th>
-                    <th></th>
+                    <th><button  type="button" class="btn btn-success" onclick="openUpdate()">
+                        <i class="bi bi-pencil"></i>
+                    </button>
+                    <button  type="button" class="btn btn-danger" onclick="openDelete()">
+                        <i class="bi bi-trash-fill"></i>
+                    </button>
+                </th>
                 </tr>
                 <tr>
                     <th><img class="img_producto" src="../../recursos/img/hoodie_negro.webp" alt="hoodie_aguacate"></th>
-                    <th ><p class="pb-3">Aguacate/Mancare</p></th>
-                    <th><p class="pb-1">Color: Verde <br> Talla: L <br> Capucha: si</p></th>
-                    <th><p class="pb-3">39.21</p></th>
-                    <th></th>
+                    <th ><p class="pb-3">Nike 19'/NIKE</p></th>
+                    <th><p class="pb-1">Color: Negro <br> Talla: M <br> Capucha: si</p></th>
+                    <th><p class="pb-3">99.99</p></th>
+                    <th><button  type="button" class="btn btn-success" onclick="openUpdate()">
+                        <i class="bi bi-pencil"></i>
+                    </button>
+                    <button  type="button" class="btn btn-danger" onclick="openDelete()">
+                        <i class="bi bi-trash-fill"></i>
+                    </button>
+                    </th>
+                </tr>
+                <tr>
+                    <th><img class="img_producto" src="../../recursos/img/hoodie3.avif" alt="hoodie_aguacate"></th>
+                    <th ><p class="pb-3">Create Beauty/BEAUTY</p></th>
+                    <th><p class="pb-1">Color: verde <br> Talla: S <br> Capucha: si</p></th>
+                    <th><p class="pb-3">99.99</p></th>
+                    <th><button  type="button" class="btn btn-success" onclick="openUpdate()">
+                        <i class="bi bi-pencil"></i>
+                    </button>
+                    <button  type="button" class="btn btn-danger" onclick="openDelete()">
+                        <i class="bi bi-trash-fill"></i>
+                    </button>
+                    </th>
                 </tr>
             </thead>
             <!-- Cuerpo de la tabla para mostrar un registro por fila -->         
@@ -139,6 +165,9 @@
             </div>
         </div>
     </main>
+    <footer class="fixed-bottom">
+
+    </footer>
     <!-- IMPORTACIÓN DE ARCHIVOS JAVASCRIPT -->
     <!-- Llamada al framework y librería de mensajes -->
     <script src="../../controladores/utilerias/privado.js"></script>
@@ -156,6 +185,7 @@
     <script type="text/javascript" src="../../controladores/utilerias/admin.js"></script>
     <!-- Llamada al controlador de la página web -->
     <script type="text/javascript" src="../../controladores/privado/producto.js"></script>
+    <script type="text/javascript" src="../../controladores/utilerias/privado.js"></script>
 
 </body>
 
