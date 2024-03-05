@@ -28,10 +28,10 @@ header.innerHTML =`<nav class="navbar bg-body-tertiary">
 </div>
 </nav>`
 
-const header = document.querySelector('footer')
-header.innerHTML = `<footer class="text-center text-white" style="background-color: #f1f1f1;">
+const footer = document.querySelector('footer')
+footer.innerHTML = `
 <!-- Grid container -->
-<div class="container pt-4">
+<div class="container pt-4 fixed-bottom">
   <!-- Section: Social media -->
   <section class="mb-4">
     <!-- Facebook -->
@@ -96,8 +96,7 @@ header.innerHTML = `<footer class="text-center text-white" style="background-col
   © 2020 Copyright:
   <a class="text-dark" href="https://mdbootstrap.com/">MDBootstrap.com</a>
 </div>
-<!-- Copyright -->
-</footer>`
+<!-- Copyright -->`
 
 
 function myFunc()  {
