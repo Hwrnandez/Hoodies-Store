@@ -1,3 +1,5 @@
+//hacemos el header para mandarlo a llamar en las paginas donde se utilizaran.
+
 const header = document.querySelector('header')
 header.innerHTML = `<nav class="navbar bg-body-tertiary">
 <div class="container-fluid">
@@ -30,7 +32,7 @@ header.innerHTML = `<nav class="navbar bg-body-tertiary">
   </nav>
 </div>
 </nav>`
-
+//Funcion para mostrar la hora en la pagina principa (+)(+) :v
 function myFunc() {
   var now = new Date();
   var time = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
@@ -38,4 +40,6 @@ function myFunc() {
 }
 myFunc();
 setInterval(myFunc, 1000);
+
+
 

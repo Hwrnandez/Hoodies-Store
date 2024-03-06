@@ -135,11 +135,12 @@
                         <div class="modal-body row g-3">
                             <!-- Campo oculto para asignar el id del registro al momento de modificar -->
                             <input type="hidden" id="idProducto" name="idProducto">
-                            <div class="col-sm-12 col-md-6">
-                                <label for="descripcionProducto" class="form-label">Marca/Nombre</label>
-                                <input id="descripcionProducto" type="text" name="descripcionProducto"
-                                    class="form-control" required>
-                            </div>
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Selecciona una marca</option>
+                                <option value="1">Nike</option>
+                                <option value="2">Adidas</option>
+                                <option value="3">Puma</option>
+                              </select>
                             <div class="col-sm-12 col-md-6">
                                 <label for="nombreProducto" class="form-label">Descripcion</label>
                                 <input id="nombreProducto" type="text" name="nombreProducto" class="form-control"
