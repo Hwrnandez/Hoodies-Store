@@ -1,5 +1,5 @@
 const header = document.querySelector('header')
-header.innerHTML =`<nav class="navbar bg-body-tertiary">
+header.innerHTML = `<nav class="navbar bg-body-tertiary">
 <div class="container-fluid">
   <a class="navbar-brand" href="../../vistas/privado/principal.html">
     <img src="../../recursos/img/Logo_hoodie.avif" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
@@ -31,10 +31,10 @@ header.innerHTML =`<nav class="navbar bg-body-tertiary">
 </div>
 </nav>`
 
-function myFunc()  {
-	var now = new Date();
-	var time = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
-	document.getElementById('hora').innerHTML= time;
+function myFunc() {
+  var now = new Date();
+  var time = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
+  document.getElementById('hora').innerHTML = time;
 }
 myFunc();
 setInterval(myFunc, 1000);

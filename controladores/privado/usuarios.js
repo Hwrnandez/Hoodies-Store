@@ -11,7 +11,7 @@ const SAVE_MODAL = new bootstrap.Modal('#saveModal'),
     MODAL_TITLE = document.getElementById('modalTitle');
 // Constantes para establecer los elementos del formulario de guardar.
 const SAVE_FORM = document.getElementById('saveForm'),
-    ID_PRODUCTO = document.getElementById('idProducto'),    
+    ID_PRODUCTO = document.getElementById('idProducto'),
     NOMBRE_MARCA_PRODUCTO = document.getElementById('nombreProducto'),
     DESCRIPCION_PRODUCTO = document.getElementById('descripcionProducto');
 
@@ -188,14 +188,14 @@ const openReport = () => {
     window.open(PATH.href);
 }
 
-function alerta(){
+function alerta() {
     Swal.fire({
         title: "¡Exito!",
         text: "¡Felicidades!",
         icon: "success"
-      });
+    });
 }
-function alertaeliminar(){
+function alertaeliminar() {
     Swal.fire({
         title: "¿Estas seguro?",
         text: "Al hacer esto eliminaras el registro",
@@ -204,13 +204,13 @@ function alertaeliminar(){
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
         confirmButtonText: "Eliminar"
-      }).then((result) => {
+    }).then((result) => {
         if (result.isConfirmed) {
-          Swal.fire({
-            title: "¡Eliminado!",
-            text: "Has borrado el registro con exito.",
-            icon: "success"
-          });
+            Swal.fire({
+                title: "¡Eliminado!",
+                text: "Has borrado el registro con exito.",
+                icon: "success"
+            });
         }
-      });
+    });
 } 
