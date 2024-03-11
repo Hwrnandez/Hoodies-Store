@@ -54,3 +54,12 @@ text-align: justify;
   color: white;
 }
 
+.text{
+  background-color: black;
+  height: 80px;
+}
+.par{
+  color: white ;
+  margin-left: 790px;
+  padding: 20px;
+}
