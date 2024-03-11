@@ -1,0 +1,16 @@
+.login,
+.image {
+  min-height: 100vh;
+}
+
+.bg-image {
+  background-color: black;
+  background-size: 100%;
+  background-position: center center;}
+
+  .text{color: rgb(0, 0, 0);
+  }
+  .link2{
+    text-decoration: none;
+    color: white;
+  }
