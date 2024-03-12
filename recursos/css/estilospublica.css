@@ -15,3 +15,7 @@
     text-decoration: none;
     color: white;
   }
+
+  .menu{
+    margin-left: -50rem !important;
+  }
