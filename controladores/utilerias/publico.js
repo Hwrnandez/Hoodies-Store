@@ -7,10 +7,10 @@ header.innerHTML = `
     </a>
     <div class="collapse navbar-collapse justify-content-center menu" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link active" aria-current="page" href="#">Hombre</a>
-        <a class="nav-link active" href="#">Mujer</a>
-        <a class="nav-link active" href="#">Destacado</a>
-        <a class="nav-link active" href="index.html"><i class="bi bi-bag-fill"></i></a>
+        <a class="nav-link active" aria-current="page" href="../../vistas/publico/hombresec.html">Hombre</a>
+        <a class="nav-link active" href="../../vistas/publico/mujeressec.html">Mujer</a>
+        <a class="nav-link active" href="../../vistas/publico/index.html">Destacado</a>
+        <a class="nav-link active" href="../../vistas/publico/carrito.html"><i class="bi bi-bag-fill"></i></a>
       </div>
     </div>
   </div>
