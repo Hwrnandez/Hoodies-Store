@@ -2,7 +2,7 @@
 <html lang="es">
 
 <head>
-    <title></title>
+    <title>a</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -19,64 +19,138 @@
     </header>
     <main>
 
-        <div class="container-fluid">
-            <div class="row no-gutter">
-                <!-- The image half -->
-                <div class="col-md-6 d-none d-md-flex bg-image"></div>
-
-
-                <!-- The content half -->
-                <div class="col-md-6 bg-light">
-                    <div class="login d-flex align-items-center py-5">
-
-                        <!-- Demo content-->
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-10 col-xl-7 mx-auto">
-                                    <h3 class="display-4 text">Hoodie´s Store</h3>
-                                    <p class="text-muted mb-4">¡Bienvenido a la pagina administrativa!</p>
-                                    <form>
-                                        <div class="form-group mb-3">
-                                            <input id="inputusuario" type="usuario" placeholder="Usuario" required=""
-                                                autofocus="" class="form-control rounded-pill border-0 shadow-sm px-4">
-                                        </div>
-                                        <div class="form-group mb-3">
-                                            <input id="inputPassword" type="Contraseña" placeholder="Contraseña"
-                                                required=""
-                                                class="form-control rounded-pill border-0 shadow-sm px-4 text-primary">
-                                        </div>
-                                        <div class="custom-control custom-checkbox mb-3">
-                                            <input id="customCheck1" type="checkbox" checked
-                                                class="custom-control-input">
-                                            <label for="customCheck1" class="custom-control-label">Recordar
-                                                contraseña</label>
-
-                                            <blockquote><a href="../../vistas/privado/correorestablecer.html"
-                                                    class="link1">
-                                                    <p class="textr">¿Has olvidado tus credenciales?</p>
-                                                </a></blockquote>
-                                            <blockquote><a href="../../vistas/privado/registro.html" class="link1">
-                                                    <p class="textr">Registrarse</p>
-                                                </a></blockquote>
-                                        </div>
-                                        <button type="submit"
-                                            class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm"><a
-                                                href="../../vistas/privado/principal.html" class="link2">Ingresar</a>
-                                        </button>
-                                        <div class="text-center d-flex justify-content-between mt-4">
-                                            <p>
-                                        </div>
-                                    </form>
+        <form class="d-none" id="loginForm">
+            <div class="container-fluid">
+                <div class="row no-gutter">
+                    <!-- The image half -->
+                    <div class="col-md-6 d-none d-md-flex bg-image"></div>
+    
+    
+                    <!-- The content half -->
+                    <div class="col-md-6 bg-light">
+                        <div class="login d-flex align-items-center py-5">
+    
+                            <!-- Demo content-->
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-10 col-xl-7 mx-auto">
+                                        <h3 class="display-4 text">Hoodie´s Store</h3>
+                                        <p class="text-muted mb-4">¡Bienvenido a la pagina administrativa!</p>
+                                        <form>
+                                            <div class="form-group mb-3">
+                                                <input id="usuarioAdmin" type="usuario" placeholder="Usuario" required=""
+                                                    autofocus="" class="form-control rounded-pill border-0 shadow-sm px-4" name="usuarioAdmin">
+                                             </div>
+                                            <div class="form-group mb-3">
+                                                <input id="passwordAdmin" type="Contraseña" placeholder="Contraseña"
+                                                    required=""
+                                                    class="form-control rounded-pill border-0 shadow-sm px-4 text-primary" name="passwordAdmin">
+                                            </div>
+                                            <div class="custom-control custom-checkbox mb-3">
+                                                <input id="customCheck1" type="checkbox" checked
+                                                    class="custom-control-input">
+                                                <label for="customCheck1" class="custom-control-label">Recordar
+                                                    contraseña</label>
+    
+                                                <blockquote><a href="../../vistas/privado/correorestablecer.html"
+                                                        class="link1">
+                                                        <p class="textr">¿Has olvidado tus credenciales?</p>
+                                                    </a></blockquote>
+                                                <blockquote><a href="../../vistas/privado/registro.html" class="link1">
+                                                        <p class="textr">Registrarse</p>
+                                                    </a></blockquote>
+                                            </div>
+                                            <button type="submit"
+                                                class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm"><a
+                                                    href="../../vistas/privado/principal.html" class="link2">Ingresar</a>
+                                            </button>
+                                            <div class="text-center d-flex justify-content-between mt-4">
+                                                <p>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
-                            </div>
-                        </div><!-- End -->
-
-                    </div>
-                </div><!-- End -->
-
+                            </div><!-- End -->
+    
+                        </div>
+                    </div><!-- End -->
+    
+                </div>
             </div>
-        </div>
+    
+    
+        </form>
 
+
+        <form class="d-none" id="signuoForm">
+            <div class="container-fluid">
+                <div class="row no-gutter">
+                    <!-- The image half -->
+                    <div class="col-md-6 d-none d-md-flex bg-image"></div>
+
+
+                    <!-- The content half -->
+                    <div class="col-md-6 bg-light">
+                        <div class="login d-flex align-items-center py-5">
+
+                            <!-- Demo content-->
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-10 col-xl-7 mx-auto">
+                                        <h3 class="display-4 text">Hoodie´s Store</h3>
+                                        <p class="text-muted mb-4">¡Bienvenido a la pagina administrativa.</p>
+                                        <form>
+                                            <div class="form-group mb-3">
+                                                <input id="nombreEmpleado" type="email" placeholder="Usuario" required=""
+                                                    autofocus=""
+                                                    class="form-control rounded-pill border-0 shadow-sm px-4" name="nombreEmpleado">
+                                            </div>
+                                            <div class="form-group mb-3">
+                                                <input id="apellidoEmpleado" type="email" placeholder="Usuario" required=""
+                                                    autofocus=""
+                                                    class="form-control rounded-pill border-0 shadow-sm px-4" name="apellidoEmpleado">
+                                            </div>
+                                            <div class="form-group mb-3 ">
+                                                <input id="correoAdmin" type="email" placeholder="Correo" required=""
+                                                    autofocus=""
+                                                    class="form-control rounded-pill border-0 shadow-sm px-4" name="correoAdmin">
+                                            </div>
+                                            <div class="form-group mb-3">
+                                                <input id="contraseñaEmpleado" type="Contraseña" placeholder="Contraseña"
+                                                    required=""
+                                                    class="form-control rounded-pill border-0 shadow-sm px-4 text-primary" name="contraseñaEmpleado">
+                                            </div>
+                                            <div class="form-group mb-3">
+                                                <input id="ConfirmarContraseña" type="Contraseña" placeholder="Contraseña"
+                                                    required=""
+                                                    class="form-control rounded-pill border-0 shadow-sm px-4 text-primary" name="ConfirmarContraseña">
+                                            </div>
+                                            <div class="custom-control custom-checkbox mb-3">
+                                                <input id="customCheck1" type="checkbox" checked
+                                                    class="custom-control-input">
+                                                <label for="customCheck1" class="custom-control-label">Recordar
+                                                    contraseña</label>
+                                            </div>
+                                            <button type="submit"
+                                                class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm"> 
+                                                <a class="link2">Registrarse</a>
+                                            </button>
+                                            <div class="text-center d-flex justify-content-between mt-4">
+                                                <p>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div><!-- End -->
+
+                        </div>
+                    </div><!-- End -->
+
+                </div>
+            </div>
+
+
+        </form>
 
     </main>
 
@@ -94,6 +168,18 @@
         integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
         crossorigin="anonymous"></script>
     <link type="text/css" rel="stylesheet" href="/recursos/css/estilos.css">
+
+    <!-- IMPORTACIÓN DE ARCHIVOS JAVASCRIPT -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../../recursos/js/sweetalert.min.js"></script>
+    <!-- Llamada al controlador general de la aplicación -->
+    <script type="text/javascript" src="../../controladores/utilerias/components.js"></script>
+    <!-- Llamada al controlador del sitio privado -->
+    <script type="text/javascript" src="../../controladores/utilerias/admin.js"></script>
+    <!-- Llamada al controlador de la página web -->
+    <script type="text/javascript" src="../../controladores/privado/index.js"></script>
 
 </body>
 
