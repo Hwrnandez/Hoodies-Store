@@ -21,7 +21,7 @@ class EmpleadoHandler
     public function checkUser($username, $password)
 {
     $sql = 'SELECT id_administrador, correo_administrador, clave_administrador
-            FROM empleados
+            FROM administrador
             WHERE  correo_administrador = ?';
     $params = array($username);
     $data = Database::getRow($sql, $params);

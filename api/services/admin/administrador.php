@@ -164,15 +164,13 @@ if (isset($_GET['action'])) {
             case 'signUp':
                 $_POST = Validator::validateForm($_POST);
                 if (
-                    !$administrador->setNombre($_POST['nombreadministrador']) or
-                    !$administrador->setApellido($_POST['apellidoadministrador']) or
-                    !$administrador->setTelefono($_POST['telefonoadministrador']) or
-                    !$administrador->setDui($_POST['duiadministrador']) or
-                    !$administrador->setCorreo($_POST['correoadministrador']) or
-                    !$administrador->setClave($_POST['claveadministrador'])
+                    !$administrador->setNombre($_POST['nombreEmpleado']) or
+                    !$administrador->setApellido($_POST['nombreEmpleado']) or
+                    !$administrador->setCorreo($_POST['correoAdmin']) or
+                    !$administrador->setClave($_POST['contraseñaEmpleado'])
                 ) {
                     $result['error'] = $administrador->getDataError();
-                } elseif ($_POST['claveadministrador'] != $_POST['confirmarClave']) {
+                } elseif ($_POST['contraseñaEmpleado'] != $_POST['ConfirmarContraseña']) {
                     $result['error'] = 'Contraseñas diferentes';
                 } elseif ($administrador->createRow()) {
                     $result['status'] = 1;
@@ -183,7 +181,7 @@ if (isset($_GET['action'])) {
                 break;
             case 'logIn':
                 $_POST = Validator::validateForm($_POST);
-                if ($administrador->checkUser($_POST['correo'], $_POST['clave'])) {
+                if ($administrador->checkUser($_POST['usuarioAdmin'], $_POST['passwordAdmin'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Autenticación correcta';
                 } else {
