@@ -75,14 +75,14 @@ const fillTable = async (form = null) => {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             TABLE_BODY.innerHTML += `
                 <tr>
-                    <td><img src="${SERVER_URL}images/CATEGORIAS/${row.imagen_CATEGORIA}" height="50"></td>
+                    <td><img src="${SERVER_URL}images/categorias/${row.img_categoria}" height="50"></td>
                     <td>${row.nombre_categoria}</td>
                     <td>${row.descripcion_categoria}</td>
                     <td>
-                        <button type="button" class="btn btn-success" onclick="openUpdate(${row.id_categoria})">
+                        <button type="button" class="btn btn-success" onclick="openUpdate(${row.id_categoria_hoodie})">
                             <i class="bi bi-pencil-fill"></i>
                         </button>
-                        <button type="button" class="btn btn-danger" onclick="openDelete(${row.id_categoria})">
+                        <button type="button" class="btn btn-danger" onclick="openDelete(${row.id_categoria_hoodie})">
                             <i class="bi bi-trash-fill"></i>
                         </button>
                     </td>
@@ -129,7 +129,7 @@ const openUpdate = async (id) => {
         SAVE_FORM.reset();
         // Se inicializan los campos con los datos.
         const ROW = DATA.dataset;
-        ID_CATEGORIA.value = ROW.id_categoria;
+        ID_CATEGORIA.value = ROW.id_categoria_hoodie;
         NOMBRE_CATEGORIA.value = ROW.nombre_categoria;
         DESCRIPCION_CATEGORIA.value = ROW.descripcion_categoria;
     } else {

@@ -41,13 +41,13 @@ const loadTemplate = async () => {
                             <div class="collapse navbar-collapse" id="navbarContent">
                                 <ul class="navbar-nav ms-auto">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="producto.html">Productos</a>
+                                        <a class="nav-link" href="AdmProductos.html">Productos</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="categoria.html">Categorías</a>
+                                        <a class="nav-link" href="AdmCategoria.html">Categorías</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="administrador.html">Administradores</a>
+                                        <a class="nav-link" href="AdmUsuarios.html">Administradores</a>
                                     </li>
                                     <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Cuenta: <b>${DATA.username}</b></a>

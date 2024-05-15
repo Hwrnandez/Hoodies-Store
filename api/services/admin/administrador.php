@@ -90,9 +90,9 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'getUser':
-                if (isset($_SESSION['correoadministrador'])) {
+                if (isset($_SESSION['usuarioAdmin'])) {
                     $result['status'] = 1;
-                    $result['username'] = $_SESSION['correoadministrador'];
+                    $result['username'] = $_SESSION['usuarioAdmin'];
                 } else {
                     $result['error'] = 'Correo de administrador indefinido';
                 }

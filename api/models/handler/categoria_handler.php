@@ -53,7 +53,7 @@ class CategoriaHandler
     {
         $sql = 'SELECT id_categoria_hoodie, descripcion_categoria, nombre_categoria, img_categoria
                 FROM categoria
-                WHERE id_categoria = ?';
+                WHERE id_categoria_hoodie = ?';
         $params = array($this->id);
         return Database::getRow($sql, $params);
     }
@@ -62,7 +62,7 @@ class CategoriaHandler
     {
         $sql = 'SELECT img_categoria
                 FROM categoria
-                WHERE id_categoria = ?';
+                WHERE id_categoria_hoodie = ?';
         $params = array($this->id);
         return Database::getRow($sql, $params);
     }
@@ -70,17 +70,17 @@ class CategoriaHandler
     public function updateRow()
     {
         $sql = 'UPDATE categoria
-                SET img_categoria = ?, descripcion_categoria = ?, nombre_categoria = ?
-                WHERE id_categoria = ?';
-        $params = array($this->imagen, $this->nombre, $this->descripcion, $this->id);
+                SET descripcion_categoria = ?, nombre_categoria = ?, img_categoria = ?
+                WHERE id_categoria_hoodie = ?';
+        $params = array($this->descripcion, $this->nombre, $this->imagen, $this->id);
         return Database::executeRow($sql, $params);
     }
  
     public function deleteRow()
     {
         $sql = 'DELETE FROM categoria
-                WHERE id_categoria = ?';
+                WHERE id_categoria_hoodie = ?';
         $params = array($this->id);
         return Database::executeRow($sql, $params);
     }
-    }
+}

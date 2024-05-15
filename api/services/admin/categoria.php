@@ -63,8 +63,8 @@ if (isset($_GET['action'])) {
                 if (
                     !$categoria->setId($_POST['idCategoria']) or
                     !$categoria->setFilename() or
-                    !$categoria->setNombre($_POST['nombreCategoria']) or
                     !$categoria->setDescripcion($_POST['descripcionCategoria']) or
+                    !$categoria->setNombre($_POST['nombreCategoria']) or
                     !$categoria->setImagen($_FILES['imagenCategoria'], $categoria->getFilename())
                 ) {
                     $result['error'] = $categoria->getDataError();

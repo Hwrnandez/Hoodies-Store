@@ -13,6 +13,7 @@ class CategoriaData extends CategoriaHandler
      */
     private $data_error = null;
     private $filename = null;
+
  
     /*
      *  Métodos para validar y establecer los datos.
@@ -44,7 +45,7 @@ class CategoriaData extends CategoriaHandler
  
     public function setImagen($file, $filename = null)
     {
-        if (Validator::validateImageFile($file, 1000)) {
+        if (Validator::validateImageFile($file, 500 )) {
             $this->imagen = Validator::getFilename();
             return true;
         } elseif (Validator::getFileError()) {
@@ -78,7 +79,7 @@ class CategoriaData extends CategoriaHandler
     public function setFilename()
     {
         if ($data = $this->readFilename()) {
-            $this->filename = $data['imagen_categoria'];
+            $this->filename = $data['img_categoria'];
             return true;
         } else {
             $this->data_error = 'Categoría inexistente';
