@@ -6,7 +6,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-
+    <link rel="stylesheet" href="../../recursos/css/estilos.css">
     <!-- Bootstrap CSS v5.2.1 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
@@ -19,17 +19,9 @@
     </header>
     <hr>
     <main>
-        <h4 class="BIENVENID">
+        <h4 class="text-center">
             BIENVENID@S
         </h4>
-        <p id="hora">
-
-        </p>
-        <div class="img1">
-            <img src="/recursos/img/Barras-y-linea.jpg" alt="">
-            <img src="/recursos//img/pasteldecc.png" alt="">
-            <img src="/recursos/img//escala.png" alt="">
-        </div>
     </main>
     <!-- Remove the container if you want to extend the Footer to full width. -->
     <!-- Remove the container if you want to extend the Footer to full width. -->
@@ -88,11 +80,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
         integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
         crossorigin="anonymous"></script>
-
-
-    </script>
-    <link rel="stylesheet" href="../../recursos/css/estilos.css">
-    <script src="../../controladores/utilerias/privado.js"></script>
+        
+    <!-- Llamada al controlador general de la aplicación -->
+    <script src="../../recursos/js/sweetalert.min.js"></script>
+    <script type="text/javascript" src="../../controladores/utilerias/components.js"></script>
+    <!-- Llamada al controlador del sitio privado -->
+    <script type="text/javascript" src="../../controladores/utilerias/admin.js"></script>
+    <!-- Llamada al controlador de la página web -->
+    <script type="text/javascript" src="../../controladores/privado/principal.js"></script>
+    
 </body>
 
 </html>

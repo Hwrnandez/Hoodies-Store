@@ -32,8 +32,8 @@ const loadTemplate = async () => {
                 <header>
                     <nav class="navbar fixed-top navbar-expand-lg bg-body-tertiary">
                         <div class="container">
-                            <a class="navbar-brand" href="dashboard.html">
-                                <img src="../../resources/img/logo.png" alt="Hodies Store" width="50">
+                            <a class="navbar-brand" href="principal.html">
+                                <img src="../../recursos/img/logo_hoodie.avif" alt="" width="50"> Hoodies Store
                             </a>
                             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>
@@ -51,9 +51,7 @@ const loadTemplate = async () => {
                                     </li>
                                     <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Cuenta: <b>${DATA.username}</b></a>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="profile.html">Editar perfil</a></li>
-                                            <li><hr class="dropdown-divider"></li>
+                                        <ul class="dropdown-menu"> 
                                             <li><a class="dropdown-item" href="#" onclick="logOut()">Cerrar sesión</a></li>
                                         </ul>
                                     </li>
@@ -69,12 +67,7 @@ const loadTemplate = async () => {
                     <nav class="navbar fixed-bottom bg-body-tertiary">
                         <div class="container">
                             <div>
-                                <p><a class="nav-link" href="https://github.com/dacasoft/coffeeshop" target="_blank"><i class="bi bi-github"></i> CoffeeShop</a></p>
-                                <p><i class="bi bi-c-square-fill"></i> 2018-2024 Todos los derechos reservados</p>
-                            </div>
-                            <div>
-                                <p><a class="nav-link" href="../public/" target="_blank"><i class="bi bi-cart-fill"></i> Sitio público</a></p>
-                                <p><i class="bi bi-envelope-fill"></i> dacasoft@outlook.com</p>
+                                <p><i class="bi bi-envelope-fill"></i> hoodies-Store@gmail.com</p>
                             </div>
                         </div>
                     </nav>
