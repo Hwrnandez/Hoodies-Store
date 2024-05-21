@@ -1,18 +1,18 @@
 <?php
 // Se incluye la clase del modelo.
 require_once('../../models/data/productos_data.php');
- 
+
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if (isset($_GET['action'])) {
     // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en el script.
     session_start();
     // Se instancia la clase correspondiente.
-    $producto = new ProductosData;
+    $producto = new ProductoData;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'dataset' => null, 'error' => null, 'exception' => null, 'fileStatus' => null);
-    // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
-    if (isset($_SESSION['idAdministrador'])) {
-        // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
+    // Se verifica si existe una sesión iniciada como empleado, de lo contrario se finaliza el script con un mensaje de error.
+    if (isset($_SESSION['idEmpleado'])) {
+        // Se compara la acción a realizar cuando un empleado ha iniciado sesión.
         switch ($_GET['action']) {
             case 'searchRows':
                 if (!Validator::validateSearch($_POST['search'])) {
@@ -22,13 +22,18 @@ if (isset($_GET['action'])) {
                     $result['message'] = 'Existen ' . count($result['dataset']) . ' coincidencias';
                 } else {
                     $result['error'] = 'No hay coincidencias';
-                }
+                } 
                 break;
             case 'createRow':
                 $_POST = Validator::validateForm($_POST);
                 if (
-                    !$producto->setMarca($_POST['nombreProducto']) or
+                    !$producto->setNombre($_POST['nombreProducto']) or
+                    !$producto->setDescripcion($_POST['descripcionProducto']) or
                     !$producto->setPrecio($_POST['precioProducto']) or
+                    !$producto->setExistencias($_POST['existenciasProducto']) or
+                    !$producto->setCategoria($_POST['categoriaProducto']) or
+                    !$producto->setMarca($_POST['marcaProducto']) or
+                    !$producto->setEstado(isset($_POST['estadoProducto']) ? 1 : 0) or
                     !$producto->setImagen($_FILES['imagenProducto'])
                 ) {
                     $result['error'] = $producto->getDataError();
@@ -63,9 +68,12 @@ if (isset($_GET['action'])) {
                 if (
                     !$producto->setId($_POST['idProducto']) or
                     !$producto->setFilename() or
-                    !$producto->setMarca($_POST['nombreProducto']) or
+                    !$producto->setNombre($_POST['nombreProducto']) or
                     !$producto->setDescripcion($_POST['descripcionProducto']) or
                     !$producto->setPrecio($_POST['precioProducto']) or
+                    !$producto->setCategoria($_POST['categoriaProducto']) or
+                    !$producto->setMarca($_POST['marcaProducto']) or
+                    !$producto->setEstado(isset($_POST['estadoProducto']) ? 1 : 0) or
                     !$producto->setImagen($_FILES['imagenProducto'], $producto->getFilename())
                 ) {
                     $result['error'] = $producto->getDataError();
@@ -91,6 +99,20 @@ if (isset($_GET['action'])) {
                     $result['fileStatus'] = Validator::deleteFile($producto::RUTA_IMAGEN, $producto->getFilename());
                 } else {
                     $result['error'] = 'Ocurrió un problema al eliminar el producto';
+                }
+                break;
+            case 'cantidadProductosCategoria':
+                if ($result['dataset'] = $producto->cantidadProductosCategoria()) {
+                    $result['status'] = 1;
+                } else {
+                    $result['error'] = 'No hay datos disponibles';
+                }
+                break;
+            case 'porcentajeProductosCategoria':
+                if ($result['dataset'] = $producto->porcentajeProductosCategoria()) {
+                    $result['status'] = 1;
+                } else {
+                    $result['error'] = 'No hay datos disponibles';
                 }
                 break;
             default:

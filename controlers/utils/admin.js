@@ -47,6 +47,9 @@ const loadTemplate = async () => {
                                         <a class="nav-link" href="Admcategoria.html">Categorías</a>
                                     </li>
                                     <li class="nav-item">
+                                        <a class="nav-link" href="Admmarca.html">Marcas</a>
+                                    </li>
+                                    <li class="nav-item">
                                         <a class="nav-link" href="Admusuarios.html">Administradores</a>
                                     </li>
                                     <li class="nav-item">
