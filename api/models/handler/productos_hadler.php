@@ -44,7 +44,7 @@ class ProductoHandler
     {
         $sql = 'INSERT INTO producto(nombre_producto, descripcion_producto, precio_producto, existencias_producto, imagen_producto, estado_producto, id_categoria, id_administrador)
                 VALUES(?, ?, ?, ?, ?, ?, ?, ?)';
-        $params = array($this->nombre, $this->descripcion, $this->precio, $this->existencias, $this->imagen, $this->estado, $this->categoria, $_SESSION['idAdministrador']);
+        $params = array($this->nombre, $this->descripcion, $this->precio, $this->existencia, $this->imagen, $this->estado, $this->idcategoria, $_SESSION['idAdministrador']);
         return Database::executeRow($sql, $params);
     }
 
@@ -80,7 +80,7 @@ class ProductoHandler
         $sql = 'UPDATE producto
                 SET imagen_producto = ?, nombre_producto = ?, descripcion_producto = ?, precio_producto = ?, estado_producto = ?, id_categoria = ?
                 WHERE id_producto = ?';
-        $params = array($this->imagen, $this->nombre, $this->descripcion, $this->precio, $this->estado, $this->categoria, $this->id);
+        $params = array($this->imagen, $this->nombre, $this->descripcion, $this->precio, $this->estado, $this->idcategoria, $this->id);
         return Database::executeRow($sql, $params);
     }
 

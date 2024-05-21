@@ -66,20 +66,6 @@ class EmpleadoData extends EmpleadoHandler
         }
     }
  
-    public function setDUI($value)
-    {
-        if (!Validator::validateDUI($value)) {
-            $this->data_error = 'El DUI debe tener el formato ########-#';
-            return false;
-        } elseif($this->checkDuplicate($value)) {
-            $this->data_error = 'El DUI ingresado ya existe';
-            return false;
-        } else {
-            $this->dui = $value;
-            return true;
-        }
-    }
- 
     public function setCorreo($value, $min = 8, $max = 100)
     {
         if (!Validator::validateEmail($value)) {

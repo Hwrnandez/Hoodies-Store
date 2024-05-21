@@ -6,7 +6,7 @@ require_once('../../models/handler/productos_handler.php');
 /*
  *	Clase para manejar el encapsulamiento de los datos de la tabla PRODUCTO.
  */
-class ProductosData extends ProductosHandler
+class ProductosData extends ProductoHandler
 {
     /*
      *  Atributos adicionales.
