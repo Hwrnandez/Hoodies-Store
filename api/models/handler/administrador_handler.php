@@ -4,7 +4,7 @@ require_once('../../helpers/database.php');
 /*
  *  Clase para manejar el comportamiento de los datos de la tabla empleado.
  */
-class EmpleadoHandler
+class AdministradorHandler
 {
     /*
      *  Declaración de atributos para el manejo de datos.
@@ -14,6 +14,8 @@ class EmpleadoHandler
     protected $apellido = null;
     protected $clave = null;
     protected $correo = null;
+    protected $imagen = null;  
+
  
     /*
      *  Métodos para gestionar la cuenta del empleado.
@@ -55,16 +57,16 @@ class EmpleadoHandler
     {
         $sql = 'UPDATE empleado
                 SET clave_empleado = ?
-                WHERE id_empleado = ?';
+                WHERE id_administrador = ?';
         $params = array($this->clave, $_SESSION['idEmpleado']);
         return Database::executeRow($sql, $params);
     }
  
     public function readProfile()
     {
-        $sql = 'SELECT id_empleado, nombre_empleado, apellido_empleado, telefono_empleado, dui_empleado, correo_empleado, clave_empleado
-                FROM empleados
-                WHERE id_empleado = ?';
+        $sql = 'SELECT id_administrador, nombre_empleado, apellido_empleado, telefono_empleado, dui_empleado, correo_empleado, clave_empleado
+                FROM administrador
+                WHERE id_administrador = ?';
         $params = array($_SESSION['idEmpleado']);
         return Database::getRow($sql, $params);
     }
@@ -73,9 +75,9 @@ class EmpleadoHandler
  
     public function editProfile()
     {
-        $sql = 'UPDATE empleados
+        $sql = 'UPDATE administrador
                 SET nombre_empleado = ?, apellido_empleado = ?, telefono_empleado = ?, dui_empleado = ?, correo_empleado = ?, clave_empleado = ?
-                WHERE id_empleado = ?';
+                WHERE id_administrador = ?';
         $params = array($this->nombre, $this->apellido, $this->telefono, $this->dui, $this->clave, $this->correo, $_SESSION['idEmpleado']);
         return Database::executeRow($sql, $params);
     }
@@ -86,8 +88,8 @@ class EmpleadoHandler
     public function searchRows()
     {
         $value = '%' . Validator::getSearchValue() . '%';
-        $sql = 'SELECT id_empleado, nombre_empleado, apellido_empleado, telefono_empleado, dui_empleado, correo_empleado, clave_empleado
-                FROM empleados
+        $sql = 'SELECT id_administrador, nombre_administrador, apellido_administrador, correo_administrador, clave_administrador
+                FROM administrador
                 WHERE apellido_empleado LIKE ? OR nombre_empleado LIKE ?
                 ORDER BY apellido_empleado';
         $params = array($value, $value);
@@ -114,7 +116,7 @@ class EmpleadoHandler
     public function readOne()
     {
         $sql = 'SELECT id_administrador, nombre_administrador, apellido_administrador, correo_administrador, clave_administrador
-        FROM administrador
+                FROM administrador
                 WHERE id_administrador = ?';
         $params = array($this->id);
         return Database::getRow($sql, $params);
@@ -122,25 +124,25 @@ class EmpleadoHandler
  
     public function updateRow()
     {
-        $sql = 'UPDATE empleados
+        $sql = 'UPDATE administrador
                 SET nombre_empleado = ?, apellido_empleado = ?, telefono_empleado = ?
-                WHERE id_empleado = ?';
+                WHERE id_administrador = ?';
         $params = array($this->nombre, $this->apellido, $this->telefono, $this->dui, $this->id);
         return Database::executeRow($sql, $params);
     }
  
     public function deleteRow()
     {
-        $sql = 'DELETE FROM empleados
-                WHERE id_empleado = ?';
+        $sql = 'DELETE FROM administrador
+                WHERE id_administrador = ?';
         $params = array($this->id);
         return Database::executeRow($sql, $params);
     }
  
     public function checkDuplicate($value)
     {
-        $sql = 'SELECT id_empleado
-                FROM empleados
+        $sql = 'SELECT id_administrador
+                FROM administrador
                 WHERE dui_empleado = ? OR correo_empleado = ?';
         $params = array($value, $value);
         return Database::getRow($sql, $params);

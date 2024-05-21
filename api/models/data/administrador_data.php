@@ -6,7 +6,7 @@ require_once('../../models/handler/administrador_handler.php');
 /*
  *  Clase para manejar el encapsulamiento de los datos de la tabla USUARIO.
  */
-class EmpleadoData extends EmpleadoHandler
+class AdministradorData extends AdministradorHandler
 {
     // Atributo genérico para manejo de errores.
     private $data_error = null;
@@ -88,6 +88,23 @@ class EmpleadoData extends EmpleadoHandler
         } else {
             $this->data_error = Validator::getPasswordError();
             return false;
+        }
+    }
+
+    public function setImagen($file, $filename = null)
+    {
+        if (Validator::validateImageFile($file, 1000 )) {
+            $this->imagen = Validator::getFilename();
+            return true;
+        } elseif (Validator::getFileError()) {
+            $this->data_error = Validator::getFileError();
+            return false;
+        } elseif ($filename) {
+            $this->imagen = $filename;
+            return true;
+        } else {
+            $this->imagen = 'default.png';
+            return true;
         }
     }
  

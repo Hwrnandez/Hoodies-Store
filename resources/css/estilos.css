@@ -54,16 +54,24 @@ text-align: justify;
   color: white;
 }
 
+<<<<<<< HEAD:resources/css/estilos.css
 
 .text4{
   background-color: black;
   height: 80px;
 } 
+=======
+.text{
+  background-color: black;
+  height: 80px;
+}
+>>>>>>> 44a06abba39518d72d94236796a2efbc08d773d9:recursos/css/estilos.css
 .par{
   color: white ;
   margin-left: 790px;
   padding: 20px;
 }
+<<<<<<< HEAD:resources/css/estilos.css
 
 .street{
   padding: 10px;
@@ -71,3 +79,5 @@ text-align: justify;
   font-size: 20px;
 }
 
+=======
+>>>>>>> 44a06abba39518d72d94236796a2efbc08d773d9:recursos/css/estilos.css

@@ -7,7 +7,7 @@ if (isset($_GET['action'])) {
     // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en el script.
     session_start();
     // Se instancia la clase correspondiente.
-    $administrador = new EmpleadoData;
+    $administrador = new AdministradorData;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'session' => 0, 'message' => null, 'dataset' => null, 'error' => null, 'exception' => null, 'username' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
@@ -28,13 +28,13 @@ if (isset($_GET['action'])) {
             case 'createRow':
                 $_POST = Validator::validateForm($_POST);
                 if (
-                    !$administrador->setNombre($_POST['nombreEmpleado']) or
-                    !$administrador->setApellido($_POST['apellidoEmpleado']) or
-                    !$administrador->setCorreo($_POST['correoAdmin']) or
-                    !$administrador->setClave($_POST['contraseñaEmpleado'])
+                    !$administrador->setNombre($_POST['nombreAdministrador']) or
+                    !$administrador->setApellido($_POST['apellidoAdministrador']) or
+                    !$administrador->setCorreo($_POST['correoAdministrador']) or
+                    !$administrador->setClave($_POST['claveAdministrador'])
                 ) {
                         $result['error'] = $administrador->getDataError();
-                    } elseif ($_POST['contraseñaEmpleado'] != $_POST['ConfirmarContraseña']) {
+                    } elseif ($_POST['claveAdministrador'] != $_POST['ConfirmarclaveAdm']) {
                         $result['error'] = 'Contraseñas diferentes';
                     } elseif ($administrador->createRow()) {
                         $result['status'] = 1;
