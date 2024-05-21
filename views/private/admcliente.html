@@ -54,6 +54,8 @@
                 </tr>
                 <tr>
                     <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Telefono</th>
                     <th>Correo</th>
                     <th>Estado</th>
                     <th>Acciones</th>
@@ -62,26 +64,38 @@
             <!-- Cuerpo de la tabla para mostrar un registro por fila -->
             <tbody id="tableBody"></tbody>
         </table>
-
         <!-- Componente Modal para guardar un registro -->
         <div class="modal fade" id="saveModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-            aria-labelledby="modalTitle" aria-hidden="true">
-            <div class="modal-dialog modal-lg modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="modalTitle"></h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
+        aria-labelledby="modalTitlex " aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="modalTitle"></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
                 </div>
+                <form id="saveForm">
+                    <!-- Campo oculto para asignar el id del registro al momento de modificar -->
+                    <input type="hidden" id="idCliente" name="idCliente">
+                    <div class="modal-body row g-3" id="modal-fondo">
+                        <div class="form-check form-switch form-check-reverse">
+                            <input class="form-check-input" type="checkbox" id="estadoCliente"
+                                name="estadoCliente" checked>
+                            <label class="form-check-label" for="estadoCliente">Estado</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
             </div>
         </div>
+    </div>
     </main>
     <footer class="fixed-bottom">
 
     </footer>
     <!-- IMPORTACIÓN DE ARCHIVOS JAVASCRIPT -->
     <!-- Llamada al framework y librería de mensajes -->
-    <script src="../../controlers/utils/privado.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
         crossorigin="anonymous"></script>
@@ -94,8 +108,8 @@
     <script type="text/javascript" src="../../controlers/utils/components.js"></script>
     <!-- Llamada al controlador del sitio privado -->
     <script type="text/javascript" src="../../controlers/utils/admin.js"></script>
-    <script type="text/javascript" src="../../controlers/private/pedido.js"></script>
- 
+    <script type="text/javascript" src="../../controlers/private/clientes.js"></script>
+
 
 </body>
 
