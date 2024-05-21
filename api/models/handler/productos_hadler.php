@@ -99,7 +99,7 @@ class ProductoHandler
                 INNER JOIN categoria USING(id_categoria)
                 WHERE id_categoria = ? AND estado_producto = true
                 ORDER BY nombre_producto';
-        $params = array($this->categoria);
+        $params = array($this->idcategoria);
         return Database::getRows($sql, $params);
     }
 
@@ -134,7 +134,7 @@ class ProductoHandler
                 INNER JOIN categoria USING(id_categoria)
                 WHERE id_categoria = ?
                 ORDER BY nombre_producto';
-        $params = array($this->categoria);
+        $params = array($this->idcategoria);
         return Database::getRows($sql, $params);
     }
 }
