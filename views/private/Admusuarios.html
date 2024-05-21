@@ -72,61 +72,7 @@
                     <th>Acciones</th>
                 </tr>
             </thead>
-            <thead>
-                <tr>
-                    <td colspan="6" id="rowsFound"></td>
-                </tr>
-                <tr>
-                    <th><img class="img_producto" src="../../resources/img/trabajadora.jpg" alt="hoodie_aguacate"></th>
-                    <th>
-                        <p class="pb-3">Alexis Texas</p>
-                    </th>
-                    <th>
-                        <p class="pb-1">Alexis69@gmail.com</p>
-                    </th>
-                    <th><button type="button" class="btn btn-success" onclick="openUpdate()">
-                            <i class="bi bi-pencil"></i>
-                        </button>
-                        <button type="button" class="btn btn-danger" onclick="alertaeliminar()">
-                            <i class="bi bi-trash-fill"></i>
-                        </button>
-                    </th>
-                <tr>
-                    <th><img class="img_producto" src="../../resources/img/trabajdoranegra.png" alt="hoodie_aguacate">
-                    </th>
-                    <th>
-                        <p class="pb-3">Mia Khalifa</p>
-                    </th>
-                    <th>
-                        <p class="pb-1">MiaKin4@gmail.com</p>
-                    </th>
-                    <th><button type="button" class="btn btn-success" onclick="openUpdate()">
-                            <i class="bi bi-pencil"></i>
-                        </button>
-                        <button type="button" class="btn btn-danger" onclick="alertaeliminar()">
-                            <i class="bi bi-trash-fill"></i>
-                        </button>
-                    </th>
-                </tr>
-                <tr>
-                    <th><img class="img_producto" src="../../resources/img/trabajadorablanca.jpg" alt="hoodie_aguacate">
-                    </th>
-                    <th>
-                        <p class="pb-3">Lana Rhoades</p>
-                    </th>
-                    <th>
-                        <p class="pb-1">Rhoadesin4@gmail.com</p>
-                    </th>
-                    <th><button type="button" class="btn btn-success" onclick="openUpdate()">
-                            <i class="bi bi-pencil"></i>
-                        </button>
-                        <button type="button" class="btn btn-danger" onclick="alertaeliminar()">
-                            <i class="bi bi-trash-fill"></i>
-                        </button>
-                    </th>
-                </tr>
-
-            </thead>
+            
             <!-- Cuerpo de la tabla para mostrar un registro por fila -->
             <tbody id="tableBody"></tbody>
         </table>
@@ -144,26 +90,35 @@
                     <form id="saveForm">
                         <div class="modal-body row g-3">
                             <!-- Campo oculto para asignar el id del registro al momento de modificar -->
-                            <input type="hidden" id="idProducto" name="idProducto">
+                            <input type="hidden" id="idAdministrador" name="idProducto">
                             <div class="col-sm-12 col-md-6">
-                                <label for="nombreProducto" class="form-label">Nombre usuario</label>
-                                <input id="nombreProducto" type="text" name="descripcionProducto" class="form-control"
+                                <label for="nombreAdministrador" class="form-label">Nombre</label>
+                                <input id="nombreAdministrador" type="text" name="nombreAdministrador" class="form-control"
                                     required>
                             </div>
                             <div class="col-sm-12 col-md-6">
-                                <label for="descripcionProducto" class="form-label">Correo</label>
-                                <input id="descripcionProducto" type="text" name="nombreProducto" class="form-control"
+                                <label for="apellidoAdministrador" class="form-label">Apellido</label>
+                                <input id="apellidoAdministrador" type="text" name="apellidoAdministrador" class="form-control"
                                     required>
                             </div>
-
                             <div class="col-sm-12 col-md-6">
-                                <label for="imagenProducto" class="form-label">Imagen</label>
-                                <input id="imagenProducto" type="file" name="imagenProducto" class="form-control"
-                                    accept=".png, .jpg">
+                                <label for="correoAdministrador" class="form-label">Correo electrònico</label>
+                                <input id="correoAdministrador" type="text" name="correoAdministrador" class="form-control"
+                                    required>
+                            </div>
+                            <div class="col-sm-12 col-md-6">
+                                <label for="claveAdministrador" class="form-label">Contraseña</label>
+                                <input id="claveAdministrador" type="password" name="claveAdministrador" class="form-control"
+                                    required>
+                            </div>
+                            <div class="col-sm-12 col-md-6">
+                                <label for="ConfirmarclaveAdm" class="form-label">Confirmar contraseña</label>
+                                <input id="ConfirmarclaveAdm" type="password" name="ConfirmarclaveAdm" class="form-control"
+                                    required>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary" onclick="alerta()">Guardar</button>
+                            <button type="submit" class="btn btn-primary">Guardar</button>
                         </div>
 
                     </form>
@@ -190,7 +145,7 @@
     <!-- Llamada al controlador del sitio privado -->
     <script type="text/javascript" src="../../controlers/utils/admin.js"></script>
     <!-- Llamada al controlador de la página web -->
-    <script type="text/javascript" src="../../controlers/private/usuarios.js"></script>
+    <script type="text/javascript" src="../../controlers/private/admAdministradores.js"></script>
     <script type="text/javascript" src="../../controlers/utils/privado.js"></script>
 
 </body>
