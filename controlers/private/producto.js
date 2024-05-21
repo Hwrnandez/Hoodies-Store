@@ -1,5 +1,5 @@
 // Constantes para completar las rutas de la API.
-const PRODUCTO_API = 'services/admin/producto.php';
+const PRODUCTO_API = 'services/admin/productos.php';
 const CATEGORIA_API = 'services/admin/categoria.php';
 // Constante para establecer el formulario de buscar.
 const SEARCH_FORM = document.getElementById('searchForm');
@@ -75,7 +75,7 @@ const fillTable = async (form = null) => {
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (DATA.status) {
         // Se recorre el conjunto de registros (dataset) fila por fila a través del objeto row.
-        DATA.dataset.forEach(row => {
+        DATA.dataset.forEach(row => {   
             // Se establece un icono para el estado del producto.
             (row.estado_producto) ? icon = 'bi bi-eye-fill' : icon = 'bi bi-eye-slash-fill';
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
@@ -105,9 +105,10 @@ const fillTable = async (form = null) => {
 
 /*
 *   Función para preparar el formulario al momento de insertar un registro.
-*   Parámetros: ninguno.
-*   Retorno: ninguno.
+*  Parámetros: ninguno.
+Retorno: ninguno.
 */
+
 const openCreate = () => {
     // Se muestra la caja de diálogo con su título.
     SAVE_MODAL.show();
@@ -129,7 +130,7 @@ const openUpdate = async (id) => {
     SAVE_MODAL.show();
     MODAL_TITLE.textContent = 'Actualizar producto';
     // Se define un objeto con los datos del registro seleccionado.
-    /*const FORM = new FormData();
+    const FORM = new FormData();
     FORM.append('idProducto', id);
     // Petición para obtener los datos del registro solicitado.
     const DATA = await fetchData(PRODUCTO_API, 'readOne', FORM);
@@ -148,7 +149,7 @@ const openUpdate = async (id) => {
         fillSelect(CATEGORIA_API, 'readAll', 'categoriaProducto', ROW.id_categoria);
     } else {
         sweetAlert(2, DATA.error, false);
-    }*/
+    }
 }
 
 /*

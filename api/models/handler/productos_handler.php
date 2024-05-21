@@ -2,8 +2,8 @@
 // Se incluye la clase para trabajar con la base de datos.
 require_once ('../../helpers/database.php');
 /*
- *	Clase para manejar el comportamiento de los datos de la tabla PRODUCTO.
- */
+*	Clase para manejar el comportamiento de los datos de la tabla PRODUCTO.
+*/
 class ProductoHandler
 {
     /*
@@ -20,52 +20,54 @@ class ProductoHandler
     protected $estado = null;
     protected $imagen = null;
     protected $existencia = null;
-
-
+ 
+ 
     // Constante para establecer la ruta de las imágenes.
     const RUTA_IMAGEN = '../../images/productos/';
-
+ 
     /*
      *   Métodos para realizar las operaciones SCRUD (search, create, read, update, and delete).
      */
     public function searchRows()
     {
         $value = '%' . Validator::getSearchValue() . '%';
-        $sql = 'SELECT p.id_producto, p.imagen_producto, m.nombre_marca, p.descripcion_producto, p.precio_producto
+        $sql = 'SELECT p.id_producto, p.imagen_producto, p.nombre_producto, m.nombre_marca, c.nombre_categoria,  p.descripcion_producto, p.precio_producto
                 FROM producto p
                 INNER JOIN marca m ON m.id_marca = p.id_marca
+                INNER JOIN categoria c ON c.id_categoria_hoodie = p.id_categoria_hoodie
                 WHERE p.nombre_producto LIKE ? OR p.descripcion_producto LIKE ?
                 ORDER BY nombre_producto;';
         $params = array($value, $value);
         return Database::getRows($sql, $params);
     }
-
+ 
     public function createRow()
     {
-        $sql = 'INSERT INTO producto(nombre_producto, descripcion_producto, precio_producto, existencias_producto, imagen_producto, estado_producto, id_categoria, id_administrador)
-                VALUES(?, ?, ?, ?, ?, ?, ?, ?)';
-        $params = array($this->nombre, $this->descripcion, $this->precio, $this->existencia, $this->imagen, $this->estado, $this->idcategoria, $_SESSION['idAdministrador']);
+        $sql = 'INSERT INTO producto(imagen_producto, nombre_producto, id_marca, id_categoria_hoodie, descripcion_producto, precio_producto, id_administrador ) 
+                VALUES(?,?,?,?,?,?,?); ';
+        $params = array( $this->imagen, $this->nombre, $this->descripcion, $this->precio, $_SESSION['idAdministrador']);
         return Database::executeRow($sql, $params);
     }
-
+ 
     public function readAll()
     {
-        $sql = 'SELECT id_producto, imagen_producto, nombre_producto, descripcion_producto, precio_producto, nombre_categoria, estado_producto
-                FROM producto
-                INNER JOIN categoria USING(id_categoria)
+        $sql = 'SELECT p.id_producto, p.imagen_producto, m.nombre_marca, p.descripcion_producto, p.precio_producto
+                FROM producto p
+                INNER JOIN marca m ON m.id_marca = p.id_marca
                 ORDER BY nombre_producto';
         return Database::getRows($sql);
     }
-
+ 
     public function readOne()
     {
-        $sql = 'SELECT id_producto, nombre_producto, descripcion_producto, precio_producto, existencias_producto, imagen_producto, id_categoria, estado_producto
-                FROM producto
+        $sql = 'SELECT p.id_producto, p.imagen_producto, m.nombre_marca, p.descripcion_producto, p.precio_producto
+                FROM producto p
+                INNER JOIN marca m ON m.id_marca = p.id_marca
                 WHERE id_producto = ?';
         $params = array($this->id);
         return Database::getRow($sql, $params);
     }
-
+ 
     public function readFilename()
     {
         $sql = 'SELECT imagen_producto
@@ -74,16 +76,16 @@ class ProductoHandler
         $params = array($this->id);
         return Database::getRow($sql, $params);
     }
-
+ 
     public function updateRow()
     {
         $sql = 'UPDATE producto
-                SET imagen_producto = ?, nombre_producto = ?, descripcion_producto = ?, precio_producto = ?, estado_producto = ?, id_categoria = ?
+                SET imagen_producto = ?, id_marca = ?, nombre_producto = ?, precio_producto = ?
                 WHERE id_producto = ?';
-        $params = array($this->imagen, $this->nombre, $this->descripcion, $this->precio, $this->estado, $this->idcategoria, $this->id);
+        $params = array($this->imagen, $this->idmarca, $this->nombre, $this->precio);
         return Database::executeRow($sql, $params);
     }
-
+ 
     public function deleteRow()
     {
         $sql = 'DELETE FROM producto
@@ -91,18 +93,19 @@ class ProductoHandler
         $params = array($this->id);
         return Database::executeRow($sql, $params);
     }
-
+    
     public function readProductosCategoria()
     {
-        $sql = 'SELECT id_producto, imagen_producto, nombre_producto, descripcion_producto, precio_producto, existencias_producto
+        $sql = 'SELECT id_producto, imagen_producto, nombre_producto, precio_producto
                 FROM producto
-                INNER JOIN categoria USING(id_categoria)
-                WHERE id_categoria = ? AND estado_producto = true
+                INNER JOIN marca USING(id_marca)
+                WHERE id_marca = ? 
                 ORDER BY nombre_producto';
-        $params = array($this->idcategoria);
+        $params = array($this->categoria);
         return Database::getRows($sql, $params);
     }
-
+     
+ 
     /*
      *   Métodos para generar gráficos.
      */
@@ -114,7 +117,7 @@ class ProductoHandler
                 GROUP BY nombre_categoria ORDER BY cantidad DESC LIMIT 5';
         return Database::getRows($sql);
     }
-
+ 
     public function porcentajeProductosCategoria()
     {
         $sql = 'SELECT nombre_categoria, ROUND((COUNT(id_producto) * 100.0 / (SELECT COUNT(id_producto) FROM producto)), 2) porcentaje
@@ -123,7 +126,7 @@ class ProductoHandler
                 GROUP BY nombre_categoria ORDER BY porcentaje DESC';
         return Database::getRows($sql);
     }
-
+ 
     /*
      *   Métodos para generar reportes.
      */
@@ -134,7 +137,7 @@ class ProductoHandler
                 INNER JOIN categoria USING(id_categoria)
                 WHERE id_categoria = ?
                 ORDER BY nombre_producto';
-        $params = array($this->idcategoria);
+        $params = array($this->categoria);
         return Database::getRows($sql, $params);
     }
 }

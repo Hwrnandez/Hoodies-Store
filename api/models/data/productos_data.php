@@ -4,8 +4,8 @@ require_once('../../helpers/validator.php');
 // Se incluye la clase padre.
 require_once('../../models/handler/productos_handler.php');
 /*
- *	Clase para manejar el encapsulamiento de los datos de la tabla PRODUCTO.
- */
+*	Clase para manejar el encapsulamiento de los datos de la tabla PRODUCTO.
+*/
 class ProductosData extends ProductoHandler
 {
     /*
@@ -13,7 +13,7 @@ class ProductosData extends ProductoHandler
      */
     private $data_error = null;
     private $filename = null;
-
+ 
     /*
      *   Métodos para validar y establecer los datos.
      */
@@ -27,11 +27,11 @@ class ProductosData extends ProductoHandler
             return false;
         }
     }
-
-    public function setNombre($value, $min = 2, $max = 50)
+ 
+    public function setMarca($value, $min = 2, $max = 40)
     {
         if (!Validator::validateAlphanumeric($value)) {
-            $this->data_error = 'El nombre debe ser un valor alfanumérico';
+            $this->data_error = 'El nombre de la marca debe ser un valor alfanumérico';
             return false;
         } elseif (Validator::validateLength($value, $min, $max)) {
             $this->nombre = $value;
@@ -41,8 +41,8 @@ class ProductosData extends ProductoHandler
             return false;
         }
     }
-
-    public function setDescripcion($value, $min = 2, $max = 250)
+ 
+    public function setDescripcion($value, $min = 2, $max = 400)
     {
         if (!Validator::validateString($value)) {
             $this->data_error = 'La descripción contiene caracteres prohibidos';
@@ -55,7 +55,7 @@ class ProductosData extends ProductoHandler
             return false;
         }
     }
-
+ 
     public function setPrecio($value)
     {
         if (Validator::validateMoney($value)) {
@@ -66,7 +66,7 @@ class ProductosData extends ProductoHandler
             return false;
         }
     }
-
+ 
     public function setExistencias($value)
     {
         if (Validator::validateNaturalNumber($value)) {
@@ -77,7 +77,7 @@ class ProductosData extends ProductoHandler
             return false;
         }
     }
-
+ 
     public function setImagen($file, $filename = null)
     {
         if (Validator::validateImageFile($file, 1000)) {
@@ -94,7 +94,7 @@ class ProductosData extends ProductoHandler
             return true;
         }
     }
-
+ 
     public function setCategoria($value)
     {
         if (Validator::validateNaturalNumber($value)) {
@@ -105,7 +105,7 @@ class ProductosData extends ProductoHandler
             return false;
         }
     }
-
+ 
     public function setEstado($value)
     {
         if (Validator::validateBoolean($value)) {
@@ -116,7 +116,7 @@ class ProductosData extends ProductoHandler
             return false;
         }
     }
-
+ 
     public function setFilename()
     {
         if ($data = $this->readFilename()) {
@@ -127,7 +127,7 @@ class ProductosData extends ProductoHandler
             return false;
         }
     }
-
+ 
     /*
      *  Métodos para obtener los atributos adicionales.
      */
@@ -135,9 +135,10 @@ class ProductosData extends ProductoHandler
     {
         return $this->data_error;
     }
-
+ 
     public function getFilename()
     {
         return $this->filename;
     }
 }
+ 

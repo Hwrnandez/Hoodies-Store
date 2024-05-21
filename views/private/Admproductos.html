@@ -51,10 +51,10 @@
                 <button type="button" class="btn btn-primary" onclick="openCreate()">
                     <i class="bi bi-plus-square-fill"></i>
                 </button>
-                <!-- Botón para abrir un reporte en formato PDF -->
+                <!-- Botón para abrir un reporte en formato PDF
                 <button type="button" class="btn btn-warning" onclick="openReport()">
                     <i class="bi bi-filetype-pdf"></i>
-                </button>
+                </button>-->
             </div>
         </div>
 
@@ -67,54 +67,19 @@
                 </tr>
                 <tr>
                     <th>Imagen</th>
-                    <th>Marca/Nombre</th>
+                    <th>Nombre</th>
+                    <th>Marca</th>
+                    <th>Categoria</th>
                     <th>Descripcion</th>
                     <th>Precio (US$)</th>
+                    <th>Existencia</th>
+                    <th>Estado</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
             <thead>
                 <tr>
                     <td colspan="6" id="rowsFound"></td>
-                </tr>
-                <tr>
-                    <th><img class="img_producto" src="../../recursos/img/aguacate.png" alt="hoodie_aguacate"></th>
-                    <th ><p class="pb-3">Aguacate/Mancare</p></th>
-                    <th><p class="pb-1">Color: Verde <br> Talla: L <br> Capucha: si</p></th>
-                    <th><p class="pb-3">39.21</p></th>
-                    <th><button  type="button" class="btn btn-success" onclick="openUpdate()">
-                        <i class="bi bi-pencil"></i>
-                    </button>
-                    <button  type="button" class="btn btn-danger"  onclick="alertaeliminar()">
-                        <i class="bi bi-trash-fill"></i>
-                    </button>
-                </th>
-                </tr>
-                <tr>
-                    <th><img class="img_producto" src="../../recursos/img/hoodie_negro.webp" alt="hoodie_aguacate"></th>
-                    <th ><p class="pb-3">Nike 19'/NIKE</p></th>
-                    <th><p class="pb-1">Color: Negro <br> Talla: M <br> Capucha: si</p></th>
-                    <th><p class="pb-3">99.99</p></th>
-                    <th><button  type="button" class="btn btn-success" onclick="openUpdate()">
-                        <i class="bi bi-pencil"></i>
-                    </button>
-                    <button  type="button" class="btn btn-danger"  onclick="alertaeliminar()">
-                        <i class="bi bi-trash-fill"></i>
-                    </button>
-                    </th>
-                </tr>
-                <tr>
-                    <th><img class="img_producto" src="../../recursos/img/hoodie3.avif" alt="hoodie_aguacate"></th>
-                    <th ><p class="pb-3">Create Beauty/BEAUTY</p></th>
-                    <th><p class="pb-1">Color: verde <br> Talla: S <br> Capucha: si</p></th>
-                    <th><p class="pb-3">99.99</p></th>
-                    <th><button  type="button" class="btn btn-success" onclick="openUpdate()">
-                        <i class="bi bi-pencil"></i>
-                    </button>
-                    <button  type="button" class="btn btn-danger"  onclick="alertaeliminar()">
-                        <i class="bi bi-trash-fill"></i>
-                    </button>
-                    </th>
                 </tr>
             </thead>
             <!-- Cuerpo de la tabla para mostrar un registro por fila -->         
@@ -135,20 +100,29 @@
                         <div class="modal-body row g-3">
                             <!-- Campo oculto para asignar el id del registro al momento de modificar -->
                             <input type="hidden" id="idProducto" name="idProducto">
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>Selecciona una marca</option>
-                                <option value="1">Nike</option>
-                                <option value="2">Adidas</option>
-                                <option value="3">Puma</option>
-                              </select>
                             <div class="col-sm-12 col-md-6">
-                                <label for="nombreProducto" class="form-label">Descripcion</label>
-                                <input id="nombreProducto" type="text" name="nombreProducto" class="form-control"
+                                <label for="nombreProducto" class="form-label">Nombre</label>
+                                <input id="nombreProducto" type="text" name="nombreProducto" class="form-control" placeholder="Nombre del producto"
+                                    required>
+                            </div>
+                            <div class="col-sm-12 col-md-6">
+                                <label for="marcaProducto" class="form-label">Marca</label>
+                                <input id="marcaProducto" type="text" name="marcaProducto" class="form-control" 
+                                    required>
+                            </div>
+                            <div class="col-sm-12 col-md-6">
+                                <label for="categoriaProducto" class="form-label">Categoria</label>
+                                <input id="categoriaProducto" type="text" name="categoriaProducto" class="form-control" placeholder="Nombre del categoria"
+                                    required>
+                            </div>
+                            <div class="col-sm-12 col-md-6">
+                                <label for="descripcionProducto" class="form-label">Descripcion</label>
+                                <input id="descripcionProducto" type="text" name="descripcionProducto" class="form-control" placeholder="Descripcion del producto"
                                     required>
                             </div>
                             <div class="col-sm-12 col-md-6">
                                 <label for="precioProducto" class="form-label">Precio (US$)</label>
-                                <input id="precioProducto" type="number" name="precioProducto" min="0.01" step="0.01"
+                                <input id="precioProducto" type="number" name="precioProducto" min="0.01" step="0.01"  placeholder="Precio del producto"
                                     class="form-control" required>
                             </div>
                             <div class="col-sm-12 col-md-6">
@@ -158,7 +132,8 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary" onclick="alerta()">Guardar</button>
+                            <button type="submit" class="btn btn-danger">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Guardar</button>
                         </div>
                         
                     </form>
