@@ -48,7 +48,7 @@ class ProductoHandler
 
     public function readAll()
     {
-        $sql = 'SELECT id_producto, imagen_producto, nombre_producto, descripcion_producto, precio_producto, nombre_categoria, nombre_marca, estado_producto
+        $sql = 'SELECT id_producto, nombre_producto, descripcion_producto, precio_producto, existencia_producto, imagen_producto, estado_producto, nombre_categoria, nombre_marca
                 FROM producto
                 INNER JOIN categoria USING(id_categoria_hoodie)
                 INNER JOIN marca USING(id_marca)
@@ -58,8 +58,10 @@ class ProductoHandler
 
     public function readOne()
     {
-        $sql = 'SELECT id_producto, nombre_producto, descripcion_producto, precio_producto, existencias_producto, imagen_producto, id_categoria_hoodie, id_marca, estado_producto
+        $sql = 'SELECT id_producto, nombre_producto, descripcion_producto, precio_producto, existencia_producto, imagen_producto, estado_producto, nombre_categoria, nombre_marca
                 FROM producto
+                INNER JOIN categoria USING(id_categoria_hoodie)
+                INNER JOIN marca USING(id_marca)
                 WHERE id_producto = ?';
         $params = array($this->id);
         return Database::getRow($sql, $params);
@@ -77,9 +79,9 @@ class ProductoHandler
     public function updateRow()
     {
         $sql = 'UPDATE producto
-                SET imagen_producto = ?, nombre_producto = ?, descripcion_producto = ?, precio_producto = ?, estado_producto = ?, id_categoria = ?, id_marca = ?
+                SET imagen_producto = ?, nombre_producto = ?, descripcion_producto = ?, precio_producto = ?, existencia_producto = ?, estado_producto = ?, id_categoria_hoodie = ?, id_marca = ?
                 WHERE id_producto = ?';
-        $params = array($this->imagen, $this->nombre, $this->descripcion, $this->precio, $this->estado, $this->categoria, $this->marca, $this->id);
+        $params = array($this->imagen, $this->nombre, $this->descripcion, $this->precio, $this->existencias, $this->estado, $this->categoria, $this->marca, $this->id);
         return Database::executeRow($sql, $params);
     }
 
