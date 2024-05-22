@@ -125,10 +125,10 @@ class AdministradorHandler
     public function updateRow()
     {
         $sql = 'UPDATE administrador
-                SET nombre_empleado = ?, apellido_empleado = ?, telefono_empleado = ?
+                SET nombre_administrador = ?, apellido_administrador = ?, correo_administrador = ?
                 WHERE id_administrador = ?';
-        $params = array($this->nombre, $this->apellido, $this->telefono, $this->dui, $this->id);
-        return Database::executeRow($sql, $params);
+        $params = array($this->nombre, $this->apellido, $this->correo, $this->id);
+        return Database::executeRow($sql, $params); 
     }
  
     public function deleteRow()

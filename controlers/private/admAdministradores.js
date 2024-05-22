@@ -78,7 +78,6 @@ const fillTable = async (form = null) => {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             TABLE_BODY.innerHTML += `
                 <tr>
-                    <td><img src="${SERVER_URL}images/categorias/${row.imgAdministrador}" height="50"></td>
                     <td>${row.nombre_administrador}</td>
                     <td>${row.apellido_administrador}</td>
                     <td>${row.correo_administrador}</td>
@@ -121,7 +120,7 @@ const openCreate = () => {
 const openUpdate = async (id) => {
     // Se define una constante tipo objeto con los datos del registro seleccionado.
     const FORM = new FormData();
-    FORM.append('idCategoria', id);
+    FORM.append('idAdministrador', id);
     // Petición para obtener los datos del registro solicitado.
     const DATA = await fetchData(ADMINISTRADOR_API, 'readOne', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
@@ -131,13 +130,14 @@ const openUpdate = async (id) => {
         MODAL_TITLE.textContent = 'Actualizar categoría';
         // Se prepara el formulario.
         SAVE_FORM.reset();
+        CLAVE_ADMINISTRADOR.disabled = true;
+        CONFIRMARCLAVE_ADMINISTRADOR.disabled = true;
         // Se inicializan los campos con los datos.
         const ROW = DATA.dataset;
         ID_ADMINISTRADOR.value = ROW.id_administrador;
         NOMBRE_ADMINISTRADOR.value = ROW.nombre_administrador;
         APELLIDO_ADMINISTRADOR.value = ROW.apellido_administrador;
-        CLAVE_ADMINISTRADOR.value = ROW.clave_administrador;
-        IMAGEN_CATEGORIA.value = ROW.imgAdministrador;
+        CORREO_ADMINISTRADOR.value = ROW.correo_administrador;
     } else {
         sweetAlert(2, DATA.error, false);
     }
@@ -155,7 +155,7 @@ const openDelete = async (id) => {
     if (RESPONSE) {
         // Se define una constante tipo objeto con los datos del registro seleccionado.
         const FORM = new FormData();
-        FORM.append('idCategoria', id);
+        FORM.append('idAdministrador', id);
         // Petición para eliminar el registro seleccionado.
         const DATA = await fetchData(ADMINISTRADOR_API, 'deleteRow', FORM);
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
