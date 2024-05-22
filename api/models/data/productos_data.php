@@ -90,7 +90,7 @@ class ProductoData extends ProductoHandler
             $this->imagen = $filename;
             return true;
         } else {
-            $this->imagen = 'default.png';
+            $this->imagen = 'default.jpg';
             return true;
         }
     }

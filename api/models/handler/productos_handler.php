@@ -40,7 +40,7 @@ class ProductoHandler
 
     public function createRow()
     {
-        $sql = 'INSERT INTO producto(nombre_producto, descripcion_producto, precio_producto, existencia_producto, imagen_producto, estado_producto, id_categoria_hoodie, id_marca, idAdministrador)
+        $sql = 'INSERT INTO producto(nombre_producto, descripcion_producto, precio_producto, existencia_producto, imagen_producto, estado_producto, id_categoria_hoodie, id_marca, id_administrador)
                 VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)';
         $params = array($this->nombre, $this->descripcion, $this->precio, $this->existencias, $this->imagen, $this->estado, $this->categoria, $this->marca, $_SESSION['idAdministrador']);
         return Database::executeRow($sql, $params);
