@@ -14,6 +14,9 @@ const SAVE_MODAL = new bootstrap.Modal('#saveModal'),
 const SAVE_FORM = document.getElementById('saveForm'),
     ID_PRODUCTO = document.getElementById('idProducto'),
     NOMBRE_PRODUCTO = document.getElementById('nombreProducto'),
+    MARCA_PRODUCTO = document.getElementById('marcaProducto'),
+    CATEGORIA_PRODUCTO = document.getElementById('categoriaProducto'),
+    IMAGEN_PRODUCTO = document.getElementById('imagenProducto'),
     DESCRIPCION_PRODUCTO = document.getElementById('descripcionProducto'),
     PRECIO_PRODUCTO = document.getElementById('precioProducto'),
     EXISTENCIAS_PRODUCTO = document.getElementById('existenciasProducto'),
@@ -88,7 +91,7 @@ const fillTable = async (form = null) => {
                     <td>${row.nombre_categoria}</td>
                     <TD>${row.descripcion_producto}</td>
                     <td>${row.precio_producto}</td>
-                    <td>${row.existencias_producto}</td>
+                    <td>${row.existencia_producto}</td>
                     <td><i class="${icon}"></i></td>    
                     <td>
                         <button type="button" class="btn btn-success" onclick="openUpdate(${row.id_producto})">
@@ -149,7 +152,7 @@ const openUpdate = async (id) => {
         NOMBRE_PRODUCTO.value = ROW.nombre_producto;
         DESCRIPCION_PRODUCTO.value = ROW.descripcion_producto;
         PRECIO_PRODUCTO.value = ROW.precio_producto;
-        EXISTENCIAS_PRODUCTO.value = ROW.existencias_producto;
+        EXISTENCIAS_PRODUCTO.value = ROW.existencia_producto;
         ESTADO_PRODUCTO.checked = ROW.estado_producto;
         fillSelect(CATEGORIA_API, 'readAll', 'categoriaProducto', ROW.id_categoria);
         fillSelect(MARCA_API, 'readAll', 'marcaProducto', ROW.id_marca);
