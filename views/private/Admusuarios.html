@@ -59,11 +59,12 @@
             <!-- Cabeza de la tabla para mostrar la cantidad de registros y los títulos de las columnas -->
             <thead>
                 <tr>
-                    <td colspan="3" id="rowsFound"></td>
+                    <td colspan="4" id="rowsFound"></td>
                 </tr>
                 <tr>
-                    <th>Usuario</th>
-                    <th>Correo</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Correo electrónico</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -85,7 +86,7 @@
                     <form id="saveForm">
                         <div class="modal-body row g-3">
                             <!-- Campo oculto para asignar el id del registro al momento de modificar -->
-                            <input type="hidden" id="idAdministrador" name="idProducto">
+                            <input type="hidden" id="idAdministrador" name="idAdministrador">
                             <div class="col-sm-12 col-md-6">
                                 <label for="nombreAdministrador" class="form-label">Nombre</label>
                                 <input id="nombreAdministrador" type="text" name="nombreAdministrador" class="form-control"

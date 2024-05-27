@@ -65,7 +65,8 @@ if (isset($_GET['action'])) {
                 if (
                     !$administrador->setId($_POST['idAdministrador']) or
                     !$administrador->setNombre($_POST['nombreAdministrador']) or
-                    !$administrador->setApellido($_POST['correoAdministrador'])
+                    !$administrador->setApellido($_POST['apellidoAdministrador']) or
+                    !$administrador->setCorreo($_POST['correoAdministrador'])
                 ) {
                     $result['error'] = $administrador->getDataError();
                 } elseif ($administrador->updateRow()) {
@@ -117,8 +118,6 @@ if (isset($_GET['action'])) {
                     !$administrador->setId($_POST['idAdministrador']) or
                     !$administrador->setNombre($_POST['nombreadministrador']) or
                     !$administrador->setApellido($_POST['apellidoadministrador']) or
-                    !$administrador->setTelefono($_POST['telefonoadministrador']) or
-                    !$administrador->setDui($_POST['duiadministrador']) or
                     !$administrador->setCorreo($_POST['correoadministrador']) or
                     !$administrador->setClave($_POST['claveadministrador'])
                 ) {

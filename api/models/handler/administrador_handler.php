@@ -78,7 +78,7 @@ class AdministradorHandler
         $sql = 'UPDATE administrador
                 SET nombre_empleado = ?, apellido_empleado = ?, telefono_empleado = ?, dui_empleado = ?, correo_empleado = ?, clave_empleado = ?
                 WHERE id_administrador = ?';
-        $params = array($this->nombre, $this->apellido, $this->telefono, $this->dui, $this->clave, $this->correo, $_SESSION['idEmpleado']);
+        $params = array($this->nombre, $this->apellido, $this->clave, $this->correo, $_SESSION['idEmpleado']);
         return Database::executeRow($sql, $params);
     }
  

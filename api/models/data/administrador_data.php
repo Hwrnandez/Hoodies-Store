@@ -54,18 +54,6 @@ class AdministradorData extends AdministradorHandler
         }
     }
  
-   
-    public function setTelefono($value)
-    {
-        if (Validator::validatePhone($value)) {
-            $this->telefono = $value;
-            return true;
-        } else {
-            $this->data_error = 'El teléfono debe tener el formato (2, 6, 7)###-####';
-            return false;
-        }
-    }
- 
     public function setCorreo($value, $min = 8, $max = 100)
     {
         if (!Validator::validateEmail($value)) {

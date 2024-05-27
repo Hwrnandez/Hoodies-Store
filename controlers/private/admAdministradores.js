@@ -15,9 +15,7 @@ const SAVE_FORM = document.getElementById('saveForm'),
     APELLIDO_ADMINISTRADOR = document.getElementById('apellidoAdministrador'),
     CORREO_ADMINISTRADOR = document.getElementById('correoAdministrador'),
     CLAVE_ADMINISTRADOR = document.getElementById('claveAdministrador'),
-    CONFIRMARCLAVE_ADMINISTRADOR = document.getElementById('ConfirmarclaveAdm'),        
-    IMAGEN_CATEGORIA = document.getElementById('imgAdministrador');
- 
+    CONFIRMARCLAVE_ADMINISTRADOR = document.getElementById('ConfirmarclaveAdm'); 
 // Método del evento para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
     loadTemplate();
@@ -40,7 +38,7 @@ SAVE_FORM.addEventListener('submit', async (event) => {
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
     // Se verifica la acción a realizar.
-    (ADMINISTRADOR_API.value) ? action = 'updateRow' : action = 'createRow';
+    (ID_ADMINISTRADOR.value) ? action = 'updateRow' : action = 'createRow';
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(SAVE_FORM);
     // Petición para guardar los datos del formulario.
@@ -110,6 +108,8 @@ const openCreate = () => {
     MODAL_TITLE.textContent = 'Crear Administrador';
     // Se prepara el formulario.
     SAVE_FORM.reset();
+    CLAVE_ADMINISTRADOR.disabled = false;
+        CONFIRMARCLAVE_ADMINISTRADOR.disabled = false;
 }
  
 /*
@@ -127,7 +127,7 @@ const openUpdate = async (id) => {
     if (DATA.status) {
         // Se muestra la caja de diálogo con su título.
         SAVE_MODAL.show();
-        MODAL_TITLE.textContent = 'Actualizar categoría';
+        MODAL_TITLE.textContent = 'Actualizar administrador';
         // Se prepara el formulario.
         SAVE_FORM.reset();
         CLAVE_ADMINISTRADOR.disabled = true;
