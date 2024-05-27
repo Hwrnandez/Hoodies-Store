@@ -77,10 +77,10 @@ const fillTable = async (form = null) => {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             TABLE_BODY.innerHTML += `
                 <tr>
-                    <td>${row.nombre_cliente}</td>
-                    <td>${row.direccion_pedido}</td
-                    <td>${row.fecha_regristo_pedido}</td>
-                    <td>${row.estado_pedido}</td>
+                    <td>${row.cliente}</td>
+                    <td>${row.direccion_pedido}</td>
+                    <td>${row.fecha}</td>
+                    <td>${row.estado_pedido}</i></td>
                     <td>
                         <button type="button" class="btn btn-success" onclick="openUpdate(${row.id_pedido})">
                             <i class="bi bi-info-circle"></i>
@@ -155,4 +155,16 @@ const openDelete = async (id) => {
             sweetAlert(2, DATA.error, false);
         }
     }
+}
+
+/*
+*   Función para abrir un reporte automático de PEDIDOs por categoría.
+*   Parámetros: ninguno.
+*   Retorno: ninguno.
+*/
+const openReport = () => {
+    // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
+    const PATH = new URL(`${SERVER_URL}reports/admin/PEDIDOs.php`);
+    // Se abre el reporte en una nueva pestaña.
+    window.open(PATH.href);
 }

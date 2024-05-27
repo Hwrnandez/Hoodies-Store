@@ -15,7 +15,7 @@ class PedidoHandler
     protected $cliente = null;
     protected $producto = null;
     protected $cantidad = null;
-    protected $estado = null;
+    protected  $estado = null;
 
     /*
     *   ESTADOS DEL PEDIDO
