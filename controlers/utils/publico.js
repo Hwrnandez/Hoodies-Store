@@ -7,6 +7,7 @@ header.innerHTML = `
     </a>
     <div class="collapse navbar-collapse justify-content-center menu" id="navbarNavAltMarkup">
       <div class="navbar-nav">
+       <a class="nav-link active" aria-current="page" href="../../views/public/Iniciosesion.html">Iniciar Sesion</a>
         <a class="nav-link active" aria-current="page" href="../../views/public/hombresec.html">Hombre</a>
         <a class="nav-link active" href="../../views/public/mujeressec.html">Mujer</a>
         <a class="nav-link active" href="../../views/public/index.html">Destacado</a>
