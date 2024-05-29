@@ -21,10 +21,10 @@ class ClienteHandler
     /*
     *   Métodos para gestionar la cuenta del cliente.
     */
-    /* public function checkUser($mail, $password)
+    public function checkUser($mail, $password)
     {
         $sql = 'SELECT id_cliente, correo_cliente, clave_cliente, estado_cliente
-                FROM clientes
+                FROM cliente
                 WHERE correo_cliente = ?';
         $params = array($mail);
         $data = Database::getRow($sql, $params);
@@ -37,7 +37,7 @@ class ClienteHandler
             return false;
         }
     } 
-    */
+    
     public function checkStatus()
     {
         if ($this->estado) {
@@ -51,7 +51,7 @@ class ClienteHandler
 
     public function changePassword()
     {
-        $sql = 'UPDATE clientes
+        $sql = 'UPDATE cliente
                 SET clave_cliente = ?
                 WHERE id_cliente = ?';
         $params = array($this->clave, $this->id);
@@ -60,7 +60,7 @@ class ClienteHandler
 
     public function changeStatus()
     {
-        $sql = 'UPDATE clientes
+        $sql = 'UPDATE cliente
                 SET estado_cliente = ?
                 WHERE id_cliente = ?';
         $params = array($this->estado, $this->id);
@@ -128,7 +128,7 @@ class ClienteHandler
         $sql = 'SELECT id_cliente
                 FROM cliente
                 WHERE correo_cliente = ?';
-        $params = array($value, $value);
+        $params = array($value);
         return Database::getRow($sql, $params);
     }
 }
