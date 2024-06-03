@@ -6,78 +6,76 @@
 .bg-image {
   background-image: url(/recursos/img/imagen7login.jpg);
   background-size: cover;
-  background-position: center center;}
+  background-position: center center;
+  padding: 0px;
+}
 
-  .text{color: rgb(0, 0, 0);}
+.sesion{
+  padding: 0px !important;
+}
+.text {
+  color: rgb(0, 0, 0);
+}
 
-  .BIENVENID  {
+.BIENVENID {
   margin-left: 810px;
   margin-top: 50px;
   box-shadow: black 100px;
   font-size: 5ch;
-  }
+}
 
-  #hora{
-  margin-left:870px;
+#hora {
+  margin-left: 870px;
   margin-top: 20px;
   font-size: 5ch;
-  }
+}
 
- .Administrar{
+.Administrar {
   margin-left: 720px;
   margin-top: 50px;
   box-shadow: black 100px;
   font-size: 5ch;
- }
+}
 
- .img_producto{
+.img_producto {
   width: 100px;
   height: 100px;
- }
+}
 
- .alinear{
-text-align: justify;
- }
+.alinear {
+  text-align: justify;
+}
 
-.textr{
+.textr {
   color: black;
   padding-top: 4px;
   text-decoration: none;
 }
 
-.link1{
+.link1 {
   text-decoration: none;
 
 }
-.link2{
+
+.link2 {
   text-decoration: none;
   color: white;
 }
 
-<<<<<<< HEAD:resources/css/estilos.css
 
-.text4{
-  background-color: black;
-  height: 80px;
-} 
-=======
-.text{
+.text4 {
   background-color: black;
   height: 80px;
 }
->>>>>>> 44a06abba39518d72d94236796a2efbc08d773d9:recursos/css/estilos.css
-.par{
-  color: white ;
+
+.par {
+  color: white;
   margin-left: 790px;
   padding: 20px;
 }
-<<<<<<< HEAD:resources/css/estilos.css
 
-.street{
+.street {
   padding: 10px;
   margin-left: 890px;
   font-size: 20px;
 }
-
-=======
->>>>>>> 44a06abba39518d72d94236796a2efbc08d773d9:recursos/css/estilos.css

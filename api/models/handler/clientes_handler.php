@@ -38,7 +38,7 @@ class ClienteHandler
         }
     } 
     
-    public function checkStatus()
+    public function  checkStatus()
     {
         if ($this->estado) {
             $_SESSION['idCliente'] = $this->id;
