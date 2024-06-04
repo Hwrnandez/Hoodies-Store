@@ -7,9 +7,9 @@
 const USER_API = 'services/public/clientes.php';
 // Constante para establecer el elemento del contenido principal.
 const MAIN = document.querySelector('main');
-MAIN.style.paddingTop = '75px';
-MAIN.style.paddingBottom = '100px';
-MAIN.classList.add('container');
+//MAIN.style.paddingTop = '75px';
+//MAIN.style.paddingBottom = '100px';
+//MAIN.classList.add('container');
 // Se establece el título de la página web.
 document.querySelector('title').textContent = 'HOODIES STORE';
 // Constante para establecer el elemento del título principal.
@@ -50,7 +50,7 @@ const loadTemplate = async () => {
                                         <a class="nav-link" href="Mujeres.html">Mujeres</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="carrito.html"<i class="bi bi-cart"></i>>Carrito</a>
+                                        <a class="nav-link" href="carrito.html"><i class="bi bi-cart"></i>Carrito</a>
                                     </li>
                                     <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Cuenta: <b>${DATA.username}</b></a>
@@ -68,7 +68,7 @@ const loadTemplate = async () => {
             // Se agrega el pie de la página web después del contenido principal.
             MAIN.insertAdjacentHTML('afterend', `
                 <footer>
-                    <nav class="navbar fixed-bottom bg-body-tertiary">
+                    <nav class="navbar bg-body-tertiary">
                         <div class="container">
                             <div>
                                 <p><i class="bi bi-envelope-fill"></i> hoodies-Store@gmail.com</p>
@@ -114,6 +114,18 @@ const loadTemplate = async () => {
                         </div>
                     </nav>
                 </header>
+            `);
+            // Se agrega el pie de la página web después del contenido principal.
+            MAIN.insertAdjacentHTML('afterend', `
+                <footer>
+                    <nav class="navbar bg-body-tertiary">
+                        <div class="container">
+                            <div>
+                                <p><i class="bi bi-envelope-fill"></i> hoodies-Store@gmail.com</p>
+                            </div>
+                        </div>
+                    </nav>
+                </footer>
             `);
     }
 }
