@@ -4,7 +4,7 @@
 */
 
 // Constante para completar la ruta de la API.
-const USER_API = 'services/admin/clientes.php';
+const USER_API = 'services/public/clientes.php';
 // Constante para establecer el elemento del contenido principal.
 const MAIN = document.querySelector('main');
 MAIN.style.paddingTop = '75px';
@@ -32,7 +32,7 @@ const loadTemplate = async () => {
                 <header>
                     <nav class="navbar fixed-top navbar-expand-lg bg-body-tertiary">
                         <div class="container">
-                            <a class="navbar-brand" href="principal.html">
+                            <a class="navbar-brand" href="index.html">
                                 <img src="../../recursos/img/logo_hoodie.avif" alt="" width="50"> Hoodies Store
                             </a>
                             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,30 +41,22 @@ const loadTemplate = async () => {
                             <div class="collapse navbar-collapse" id="navbarContent">
                                 <ul class="navbar-nav ms-auto">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="Admproductos.html">Productos</a>
+                                        <a class="nav-link" href="index.html">Destacados</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="Admcategoria.html">Categorías</a>
+                                        <a class="nav-link" href="hombresec.html">Hombres</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="Admmarca.html">Marcas</a>
+                                        <a class="nav-link" href="Mujeres.html">Mujeres</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="Admusuarios.html">Administradores</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="Admcliente.html">Clientes</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="pedidos.html">Pedidos</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="valoraciones.html">Valoraciones</a>
+                                        <a class="nav-link" href="carrito.html"<i class="bi bi-cart"></i>>Carrito</a>
                                     </li>
                                     <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Cuenta: <b>${DATA.username}</b></a>
                                         <ul class="dropdown-menu"> 
                                             <li><a class="dropdown-item" href="#" onclick="logOut()">Cerrar sesión</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="logOut()">Editar perfil</a></li>
                                         </ul>
                                     </li>
                                 </ul>
@@ -88,5 +80,40 @@ const loadTemplate = async () => {
         } else {
             sweetAlert(3, DATA.error, false, 'index.html');
         }
+    }
+    else{
+        MAIN.insertAdjacentHTML('beforebegin', `
+                <header>
+                    <nav class="navbar fixed-top navbar-expand-lg bg-body-tertiary">
+                        <div class="container">
+                            <a class="navbar-brand" href="index.html">
+                                <img src="../../recursos/img/logo_hoodie.avif" alt="" width="50"> Hoodies Store
+                            </a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarContent">
+                                <ul class="navbar-nav ms-auto">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="index.html">Destacados</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="hombresec.html">Hombres</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="Mujeres.html">Mujeres</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="carrito.html"<i class="bi bi-cart"></i>Carrito</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="Iniciosesion.html"<i class="bi bi-cart"></i>Iniciar Sesión</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </header>
+            `);
     }
 }
