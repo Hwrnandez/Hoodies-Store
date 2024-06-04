@@ -88,34 +88,5 @@ const loadTemplate = async () => {
         } else {
             sweetAlert(3, DATA.error, false, 'index.html');
         }
-    } else {
-        // Se comprueba si la página web es la principal, de lo contrario se direcciona a iniciar sesión.
-        if (location.pathname.endsWith('index.html')) {
-            // Se agrega el encabezado de la página web antes del contenido principal.
-            MAIN.insertAdjacentHTML('beforebegin', `
-                <header>
-                    <nav class="navbar fixed-top bg-body-tertiary">
-                        <div class="container">
-                            <a class="navbar-brand" href="index.html">
-                                <img src="../../resources/img/logo.png" alt="inventory" width="50">
-                            </a>
-                        </div>
-                    </nav>
-                </header>
-            `);
-            // Se agrega el pie de la página web después del contenido principal.
-            MAIN.insertAdjacentHTML('afterend', `
-                <footer>
-                    <nav class="navbar fixed-bottom bg-body-tertiary">
-                        <div class="container">
-                            <p><a class="nav-link" href="https://github.com/dacasoft/coffeeshop" target="_blank"><i class="bi bi-github"></i> CoffeeShop</a></p>
-                            <p><i class="bi bi-envelope-fill"></i> dacasoft@outlook.com</p>
-                        </div>
-                    </nav>
-                </footer>
-            `);
-        } else {
-            location.href = 'index.html';
-        }
     }
 }
