@@ -44,10 +44,7 @@ const loadTemplate = async () => {
                                         <a class="nav-link" href="index.html">Destacados</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="hombresec.html">Hombres</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="Mujeres.html">Mujeres</a>
+                                        <a class="nav-link" href="hombresec.html">Producto</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="carrito.html"><i class="bi bi-cart"></i>Carrito</a>
@@ -98,10 +95,7 @@ const loadTemplate = async () => {
                                         <a class="nav-link" href="index.html">Destacados</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="hombresec.html">Hombres</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="Mujeres.html">Mujeres</a>
+                                        <a class="nav-link" href="producto.html">Producto</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="carrito.html"<i class="bi bi-cart"></i>Carrito</a>
