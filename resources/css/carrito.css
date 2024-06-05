@@ -1,0 +1,15 @@
+ section {
+    padding: 80px;
+    overflow: hidden;
+  }
+  
+  main {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #FFFFFF;
+  }
+  
+  #tabla {
+    background-color: white;
+    color: #000000;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  }
