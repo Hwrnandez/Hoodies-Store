@@ -58,9 +58,9 @@ class ProductoHandler
 
     public function readOne()
     {
-        $sql = 'SELECT id_producto, nombre_producto, descripcion_producto, precio_producto, existencia_producto, imagen_producto, estado_producto, nombre_categoria, nombre_marca
+        $sql = 'SELECT id_producto, nombre_categoria, nombre_marca, nombre_producto, descripcion_producto, precio_producto,  estado_producto, imagen_producto, existencia_producto
                 FROM producto
-                INNER JOIN categoria USING(id_categoria_hoodie)
+                INNER JOIN categoria USING(id_categoria_hoodie) 
                 INNER JOIN marca USING(id_marca)
                 WHERE id_producto = ?';
         $params = array($this->id);

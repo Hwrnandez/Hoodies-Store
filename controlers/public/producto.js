@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                             <li class="list-group-item"id="lista">Descripcion: ${row.descripcion_producto}</li>
                         </ul>
                         <div class="card-body text-center" >
-                            <a href="detalle.html?id=${row.id_producto}" class="btn btn-outline-secondary0'" id="verDetalle">Ver detalle</a>
+                            <a href="detalle_producto.html?id=${row.id_producto}" class="btn btn-outline-secondary0'" id="verDetalle">Ver detalle</a>
                         </div>
                     </div>
                 </div>
