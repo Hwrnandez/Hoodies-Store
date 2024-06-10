@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     // Se define un objeto con los datos de la categoría seleccionada.
     const FORM = new FormData();
-    FORM.append('idCategoria', PARAMS.get('id_categoria_hoodie'));
+    FORM.append('idCategoria', PARAMS.get('id'));
     // Petición para solicitar los productos de la categoría seleccionada.
     const DATA = await fetchData(PRODUCTO_API, 'readProductosCategoria', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
@@ -34,10 +34,11 @@ document.addEventListener('DOMContentLoaded', async () => {
                         </div>
                         <ul class="list-group list-group-flush" id="lista">
                             <li class="list-group-item"id="lista">Precio unitario (US$): ${row.precio_producto}</li>
-                            <li class="list-group-item"id="lista">Existencias: ${row.existencia_producto}</li>
+                            <li class="list-group-item"id="lista">Precio unitario (US$): ${row.precio_producto}</li>
+                            <li class="list-group-item"id="lista">Descripcion: ${row.descripcion_producto}</li>
                         </ul>
                         <div class="card-body text-center" >
-                            <a href="detalle.html?id=${row.id_producto}" class="btn btn-primary" id="verDetalle">Ver detalle</a>
+                            <a href="detalle.html?id=${row.id_producto}" class="btn btn-outline-secondary0'" id="verDetalle">Ver detalle</a>
                         </div>
                     </div>
                 </div>

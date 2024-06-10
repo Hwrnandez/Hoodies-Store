@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                         <div class="card-body text-center" >
                             <h5 class="card-title">${row.nombre_categoria}</h5>
                             <p class="card-text">${row.descripcion_categoria}</p>
-                            <a href="${url}" class="btn btn-primary" id="VerProductos">Ver productos</a>
+                            <a href="${url}" class="btn btn-outline-secondary" id="VerProductos">Ver productos</a>
                         </div>
                     </div>
                 </div>
