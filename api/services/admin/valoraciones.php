@@ -24,7 +24,7 @@ if (isset($_GET['action'])) {
                 } else {
                     $result['error'] = 'No hay coincidencias';
                 }
-                break;
+                break;A
             case 'readAll':
                 if ($result['dataset'] = $comentario->readAll()) {
                     $result['status'] = 1;

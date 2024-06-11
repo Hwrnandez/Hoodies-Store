@@ -41,10 +41,7 @@ const loadTemplate = async () => {
                             <div class="collapse navbar-collapse" id="navbarContent">
                                 <ul class="navbar-nav ms-auto">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="index.html">Destacados</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="hombresec.html">Producto</a>
+                                        <a class="nav-link" href="index.html">Categoria</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="carrito.html"><i class="bi bi-cart"></i>Carrito</a>
@@ -92,10 +89,7 @@ const loadTemplate = async () => {
                             <div class="collapse navbar-collapse" id="navbarContent">
                                 <ul class="navbar-nav ms-auto">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="index.html">Destacados</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="producto.html">Producto</a>
+                                        <a class="nav-link" href="index.html">Categoria</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="carrito.html"<i class="bi bi-cart"></i>Carrito</a>

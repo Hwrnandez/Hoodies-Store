@@ -13,7 +13,7 @@ class PedidoHandler
     protected $id_pedido = null;
     protected $id_detalle = null;
     protected $cliente = null;
-    protected $producto = null;
+    protected $producto = null; 
     protected $cantidad = null;
     protected  $estado = null;
 
