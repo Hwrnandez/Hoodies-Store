@@ -15,6 +15,9 @@ class ValoracionHandler
     protected $descripcion = null;
     protected $fecha = null; 
     protected $estado = null;
+    protected $puntaje = null;
+    protected $idCliente = null;
+    protected $idProducto = null;
 
     public function changeStatus()
     {
@@ -91,4 +94,27 @@ class ValoracionHandler
         $params = array($this->producto);
         return Database::getRows($sql, $params);
     }
+}
+public function createValoracion()
+{
+    $sql = 'insert into valoracion (descripcion_comentario, puntuacion, estado_comentario, id_cliente, id_producto) VALUES
+            (?, ?, 1, ?, ?);';
+    $params = array(
+        $this->descripcion
+        $this->puntaje,
+        $_SESSION['idCliente'],
+        $this->idProducto
+    );
+    return Database::executeRow($sql, $params);
+}
+
+public function readComentarios()
+{
+    $sql = "SELECT *
+        FROM vista_productos_comentarios
+        WHERE id_producto = ? AND estado = 1
+        ORDER BY calificacion DESC;
+        ";
+    $params = array($this->idProducto);
+    return Database::getRows($sql, $params);
 }
