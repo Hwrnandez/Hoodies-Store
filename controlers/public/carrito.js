@@ -62,7 +62,6 @@ async function readDetail() {
             TABLE_BODY.innerHTML += `
                 <tr>
                 <td><img src="${SERVER_URL}images/productos/${row.imagen_producto}"></td>
-                    
                     <td>${row.nombre_producto}</td>
                     <td>${row.precio_producto}</td>
                     <td>${row.cantidad_producto}</td>

@@ -17,6 +17,9 @@ class PedidoHandler
     protected $cantidad = null;
     protected  $estado = null;
 
+    // Constante para establecer la ruta de las imágenes.
+    const RUTA_IMAGEN = '../../images/productos/';
+
     /*
     *   ESTADOS DEL PEDIDO
     *   Pendiente (valor por defecto en la base de datos). Pedido en proceso y se puede modificar el detalle.
