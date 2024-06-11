@@ -44,6 +44,9 @@ const loadTemplate = async () => {
                                         <a class="nav-link" href="index.html">Categoria</a>
                                     </li>
                                     <li class="nav-item">
+                                        <a class="nav-link" href="perfil.html">Perfil</a>
+                                    </li>
+                                    <li class="nav-item">
                                         <a class="nav-link" href="carrito.html"><i class="bi bi-cart"></i>Carrito</a>
                                     </li>
                                     <li class="nav-item dropdown">
@@ -95,6 +98,9 @@ const loadTemplate = async () => {
                                 <ul class="navbar-nav ms-auto">
                                     <li class="nav-item">
                                         <a class="nav-link" href="index.html">Categoria</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="perfil.html">Perfil</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="carrito.html"<i class="bi bi-cart"></i>Carrito</a>
