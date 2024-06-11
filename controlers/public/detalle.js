@@ -1,7 +1,7 @@
 // Constantes para completar la ruta de la API.
 const PRODUCTO_API = 'services/public/producto.php',
     PEDIDO_API = 'services/public/pedido.php',
-    COMENTARIOS_API = 'services/public/comentario.php';
+    COMENTARIOS_API = 'services/public/valoraciones.php';
 // Constante tipo objeto para obtener los parámetros disponibles en la URL.
 const PARAMS = new URLSearchParams(location.search);
 // Constante para establecer el formulario de agregar un producto al carrito de compras.
