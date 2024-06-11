@@ -54,7 +54,7 @@ class ClienteHandler
         }
     }
    
-    public function  checkStatus()
+    public function checkStatus()
     {
         if ($this->estado) {
             $_SESSION['idCliente'] = $this->id;
@@ -70,7 +70,7 @@ class ClienteHandler
         $sql = 'UPDATE cliente
                 SET clave_cliente = ?
                 WHERE id_cliente = ?';
-        $params = array($this->clave, $this->id);
+        $params = array($this->clave, $_SESSION['idCliente']);
         return Database::executeRow($sql, $params);
     }
  
