@@ -47,7 +47,7 @@ async function readDetail() {
     // Petición para obtener los datos del pedido en proceso.
     const DATA = await fetchData(PEDIDO_API, 'readDetail');
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
-    if (DATA.status) {
+    if (DATA.status) {  
         // Se inicializa el cuerpo de la tabla.
         TABLE_BODY.innerHTML = '';
         // Se declara e inicializa una variable para calcular el importe por cada producto.
@@ -67,11 +67,11 @@ async function readDetail() {
                     <td>${row.cantidad_producto}</td>
                     <td>${subtotal.toFixed(2)}</td>
                     <td>
-                        <button type="button" onclick="openUpdate(${row.id_detalle}, ${row.cantidad_producto})" class="btn btn-info">
-                            <i class="bi bi-plus-slash-minus"></i>
+                        <button type="button" class="btn btn-success" onclick="openUpdate(${row.id_detalle}, ${row.cantidad_producto})">
+                            <i class="bi bi-pencil-fill"></i>
                         </button>
-                        <button type="button" onclick="openDelete(${row.id_detalle})" class="btn btn-danger">
-                            <i class="bi bi-cart-dash"></i>
+                        <button type="button" class="btn btn-danger" onclick="openDelete(${row.id_detalle})">
+                            <i class="bi bi-trash-fill"></i>
                         </button>
                     </td>
                 </tr>

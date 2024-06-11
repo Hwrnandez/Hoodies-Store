@@ -62,14 +62,19 @@ const loadTemplate = async () => {
             // Se agrega el pie de la página web después del contenido principal.
             MAIN.insertAdjacentHTML('afterend', `
                 <footer>
-                    <nav class="navbar bg-body-tertiary">
-                        <div class="container">
-                            <div>
-                                <p><i class="bi bi-envelope-fill"></i> hoodies-Store@gmail.com</p>
-                            </div>
-                        </div>
-                    </nav>
-                </footer>
+            <nav class="navbar fixed-bottom" id="footerColor">
+                <div class="container">
+                    <div>
+                        <h6>Hoodies Store</h6>
+                        <p><i class="bi bi-c-square"></i> 2024 - Todos los derechos reservados</p>
+                    </div>
+                    <div>
+                        <h6>Contáctanos</h6>
+                        <p><i class="bi bi-envelope"></i> hoodies store@gmail.com</p>
+                    </div>
+                </div>
+            </nav>
+        </footer>
             `);
         } else {
             sweetAlert(3, DATA.error, false, 'index.html');
@@ -106,14 +111,19 @@ const loadTemplate = async () => {
             // Se agrega el pie de la página web después del contenido principal.
             MAIN.insertAdjacentHTML('afterend', `
                 <footer>
-                    <nav class="navbar fixed-bottom bg-body-tertiary">
-                        <div class="container">
-                            <div>
-                                <p><i class="bi bi-envelope-fill"></i> hoodies-Store@gmail.com</p>
-                            </div>
-                        </div>
-                    </nav>
-                </footer>
+            <nav class="navbar fixed-bottom" id="footerColor">
+                <div class="container">
+                    <div>
+                        <h6>Hoodies Store</h6>
+                        <p><i class="bi bi-c-square"></i> 2024 - Todos los derechos reservados</p>
+                    </div>
+                    <div>
+                        <h6>Contáctanos</h6>
+                        <p><i class="bi bi-envelope"></i> hoodies store@gmail.com</p>
+                    </div>
+                </div>
+            </nav>
+        </footer>
             `);
     }
 }
