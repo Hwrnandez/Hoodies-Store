@@ -1,15 +1,14 @@
-
 <?php
 // Se incluye la clase para trabajar con la base de datos.
-require_once('../../helpers/database.php');
+require_once ('../../helpers/database.php');
 /*
-*	Clase para manejar el comportamiento de los datos de la tabla PRODUCTO.
-*/
+ *	Clase para manejar el comportamiento de los datos de la tabla PRODUCTO.
+ */
 class ComentarioHandler
 {
     /*
-    *   Declaración de atributos para el manejo de datos.
-    */
+     *   Declaración de atributos para el manejo de datos.
+     */
     protected $id = null;
     protected $search = null;
     protected $idProducto = null;
@@ -28,8 +27,10 @@ class ComentarioHandler
     const RUTA_IMAGEN = '../../images/modelos/';
 
     /*
-    *   Métodos para realizar las operaciones SCRUD (search, create, read, update, and delete).
-    */
+     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, and delete).
+     */
+
+    /*
     public function searchRows()
     {
         $this->search = $this->search === '' ? '%%' : '%' . $this->search . '%';
@@ -51,44 +52,73 @@ class ComentarioHandler
         $params = array($this->search, $this->search);
         return Database::getRows($sql, $params);
     }
+        */
 
     public function createRow()
     {
 
-        $sql = 'INSERT INTO comentarios(contenido_comentario,puntuacion_comentario,
-        fecha_comentario,estado_comentario, id_detalle) VALUES(?,?,now(),true,?)';
-        $params = array($this->mensaje, $this->puntuacion, $this->idDetalle,);
+        $sql = 'INSERT INTO comentario(contenido_comentario,fecha_comentario,estado_comentario,puntuacion_comentario, id_detalle) VALUES(?,now(),true,?)';
+        $params = array($this->mensaje, $this->puntuacion, $this->idDetalle, );
         return Database::executeRow($sql, $params);
     }
 
     public function readAll()
     {
-        $sql = 'select id_comentario,id_detalle,CONCAT(nombre_cliente," ",apellido_cliente) as cliente,
-        CONCAT(nombre_producto) as modelo,contenido_comentario,
-        puntuacion_comentario,estado_comentario,
-        DATE_FORMAT(cm.fecha_comentario, "%d-%m-%Y - %h:%i %p") AS fecha_comentario
-        from comentarios cm
-        INNER JOIN detalle_pedidos dp USING(id_detalle)
-        INNER JOIN pedidos p USING(id_pedido)
-        INNER JOIN clientes c USING(id_cliente)
-        INNER JOIN productos mo USING (id_producto)
-        INNER JOIN marcas ma USING (id_marca)
-        ORDER BY fecha_comentario DESC, estado_comentario DESC';
+        $sql = 'SELECT 
+    cm.id_comentario,
+    cm.id_detalle,
+    CONCAT(c.nombre_cliente, " ", c.apellido_cliente) AS cliente,
+    mo.nombre_producto AS modelo,
+    cm.contenido_comentario,
+    cm.puntuacion_comentario,
+    cm.estado_comentario,
+    DATE_FORMAT(cm.fecha_comentario, "%d-%m-%Y - %h:%i %p") AS fecha_comentario
+FROM 
+    comentario cm
+INNER JOIN 
+    detalle_pedido dp ON cm.id_detalle = dp.id_detalle
+INNER JOIN 
+    pedido p ON dp.id_pedido = p.id_pedido
+INNER JOIN 
+    cliente c ON cm.id_cliente = c.id_cliente
+INNER JOIN 
+    producto mo ON cm.id_producto = mo.id_producto
+INNER JOIN 
+    marca ma ON mo.id_marca = ma.id_marca
+ORDER BY 
+    fecha_comentario DESC, estado_comentario DESC
+LIMIT 
+    0, 1000;';
         return Database::getRows($sql);
     }
     public function readAllActive()
     {
-        $sql = 'select id_producto,id_comentario,id_detalle,CONCAT(nombre_cliente," ",apellido_cliente) as cliente,
-        CONCAT(nombre_producto) as modelo,contenido_comentario,
-        puntuacion_comentario,estado_comentario,
-        DATE_FORMAT(fecha_comentario, "%d-%m-%Y - %h:%i %p") AS fecha_comentario
-        from comentarios 
-        INNER JOIN detalle_pedidos dp USING(id_detalle)
-        INNER JOIN pedidos USING(id_pedido)
-        INNER JOIN clientes  USING(id_cliente)
-        INNER JOIN productos USING (id_producto)
-        WHERE id_producto = ? AND estado_comentario=true
-        ORDER BY puntuacion_comentario DESC';
+        $sql = 'SELECT 
+    cm.id_producto,
+    cm.id_comentario,
+    cm.id_detalle,
+    CONCAT(c.nombre_cliente, " ", c.apellido_cliente) AS cliente,
+    mo.nombre_producto AS modelo,
+    cm.contenido_comentario,
+    cm.puntuacion_comentario,
+    cm.estado_comentario,
+    DATE_FORMAT(cm.fecha_comentario, "%d-%m-%Y - %h:%i %p") AS fecha_comentario
+FROM 
+    comentario cm
+INNER JOIN 
+    detalle_pedido dp ON cm.id_detalle = dp.id_detalle
+INNER JOIN 
+    pedido p ON dp.id_pedido = p.id_pedido
+INNER JOIN 
+    cliente c ON cm.id_cliente = c.id_cliente
+INNER JOIN 
+    producto mo ON cm.id_producto = mo.id_producto
+WHERE 
+    cm.id_producto = 1 AND cm.estado_comentario = TRUE
+ORDER BY 
+    cm.puntuacion_comentario DESC
+LIMIT 
+    0, 1000;';
         //echo $this->idProducto. ' que';
         $params = array($this->idProducto);
 
@@ -96,17 +126,34 @@ class ComentarioHandler
     }
     public function readByIdDetalle()
     {
-        $sql = 'select id_producto,id_comentario,id_detalle,CONCAT(nombre_cliente," ",apellido_cliente) as cliente,
-        CONCAT(nombre_producto) as modelo,contenido_comentario,
-        puntuacion_comentario,estado_comentario,
-        DATE_FORMAT(fecha_comentario, "%d-%m-%Y - %h:%i %p") AS fecha_comentario
-        from comentarios 
-        INNER JOIN detalle_pedidos dp USING(id_detalle)
-        INNER JOIN pedidos p USING(id_pedido)
-        INNER JOIN clientes c USING(id_cliente)
-        INNER JOIN productos mo USING (id_producto)
-        INNER JOIN marcas ma USING (id_marca)
-        WHERE id_detalle = ?';
+        $sql = 'SELECT 
+    cm.id_producto,
+    cm.id_comentario,
+    cm.id_detalle,
+    CONCAT(c.nombre_cliente, " ", c.apellido_cliente) AS cliente,
+    mo.nombre_producto AS modelo,
+    cm.contenido_comentario,
+    cm.puntuacion_comentario,
+    cm.estado_comentario,
+    DATE_FORMAT(cm.fecha_comentario, "%d-%m-%Y - %h:%i %p") AS fecha_comentario
+FROM 
+    comentario cm
+INNER JOIN 
+    detalle_pedido dp ON cm.id_detalle = dp.id_detalle
+INNER JOIN 
+    pedido p ON dp.id_pedido = p.id_pedido
+INNER JOIN 
+    cliente c ON cm.id_cliente = c.id_cliente
+INNER JOIN 
+    producto mo ON cm.id_producto = mo.id_producto
+INNER JOIN 
+    marca ma ON mo.id_marca = ma.id_marca
+WHERE 
+    cm.id_detalle = 1
+ORDER BY 
+    cm.puntuacion_comentario DESC
+LIMIT 
+    0, 1000;';
         //echo $this->idProducto. ' que';
         $params = array($this->idDetalle);
 
@@ -114,17 +161,30 @@ class ComentarioHandler
     }
     public function readByIdComentario()
     {
-        $sql = 'select id_producto,id_comentario,id_detalle,CONCAT(nombre_cliente," ",apellido_cliente) as cliente,
-        CONCAT(nombre_marca," ",nombre_producto) as modelo,contenido_comentario,
-        puntuacion_comentario,estado_comentario,
-        DATE_FORMAT(fecha_comentario, "%d-%m-%Y - %h:%i %p") AS fecha_comentario
-        from comentarios 
-        INNER JOIN detalle_pedidos dp USING(id_detalle)
-        INNER JOIN pedidos p USING(id_pedido)
-        INNER JOIN clientes c USING(id_cliente)
-        INNER JOIN productos mo USING (id_producto)
-        INNER JOIN marcas ma USING (id_marca)
-        WHERE id_comentario = ?';
+        $sql = 'SELECT 
+    cm.id_producto,
+    cm.id_comentario,
+    cm.id_detalle,
+    CONCAT(c.nombre_cliente, " ", c.apellido_cliente) AS cliente,
+    CONCAT(ma.nombre_marca, " ", mo.nombre_producto) AS modelo,
+    cm.contenido_comentario,
+    cm.puntuacion_comentario,
+    cm.estado_comentario,
+    DATE_FORMAT(cm.fecha_comentario, "%d-%m-%Y - %h:%i %p") AS fecha_comentario
+FROM 
+    comentario cm
+INNER JOIN 
+    detalle_pedido dp ON cm.id_detalle = dp.id_detalle
+INNER JOIN 
+    pedido p ON dp.id_pedido = p.id_pedido
+INNER JOIN 
+    cliente c ON cm.id_cliente = c.id_cliente
+INNER JOIN 
+    producto mo ON cm.id_producto = mo.id_producto
+INNER JOIN 
+    marca ma ON mo.id_marca = ma.id_marca
+WHERE 
+    cm.id_comentario = 1;';
         //echo $this->idProducto. ' que';
         $params = array($this->id);
 
@@ -134,18 +194,31 @@ class ComentarioHandler
 
     public function readOne()
     {
-        $sql = 'select id_comentario,id_detalle,CONCAT(nombre_cliente," ",apellido_cliente) as cliente,
-        CONCAT(nombre_producto) as modelo,contenido_comentario,
-        puntuacion_comentario,estado_comentario,
-        DATE_FORMAT(cm.fecha_comentario, "%d-%m-%Y - %h:%i %p") AS fecha_comentario
-        from comentarios cm
-        INNER JOIN detalle_pedidos dp USING(id_detalle)
-        INNER JOIN pedidos p USING(id_pedido)
-        INNER JOIN clientes c USING(id_cliente)
-        INNER JOIN productos mo USING (id_producto)
-        INNER JOIN marcas ma USING (id_marca)
-        WHERE id_comentario = ?
-        ORDER BY fecha_comentario DESC, estado_comentario DESC';
+        $sql = 'SELECT 
+    cm.id_comentario,
+    cm.id_detalle,
+    CONCAT(c.nombre_cliente, " ", c.apellido_cliente) AS cliente,
+    mo.nombre_producto AS modelo,
+    cm.contenido_comentario,
+    cm.puntuacion_comentario,
+    cm.estado_comentario,
+    DATE_FORMAT(cm.fecha_comentario, "%d-%m-%Y - %h:%i %p") AS fecha_comentario
+FROM 
+    comentario cm
+INNER JOIN 
+    detalle_pedido dp ON cm.id_detalle = dp.id_detalle
+INNER JOIN 
+    pedido p ON dp.id_pedido = p.id_pedido
+INNER JOIN 
+    cliente c ON cm.id_cliente = c.id_cliente
+INNER JOIN 
+    producto mo ON cm.id_producto = mo.id_producto
+INNER JOIN 
+    marca ma ON mo.id_marca = ma.id_marca
+WHERE 
+    cm.id_comentario = 1
+ORDER BY 
+    cm.fecha_comentario DESC, cm.estado_comentario DESC;';
         $params = array($this->id);
         $data = Database::getRow($sql, $params);
         //$_SESSION['idmod'] = $data['id_producto'];
@@ -167,7 +240,7 @@ class ComentarioHandler
         $sql = 'UPDATE comentarios
                 SET estado_comentario = ?
                 WHERE id_comentario = ?';
-        $params = array($this->estado,  $this->id);
+        $params = array($this->estado, $this->id);
         return Database::executeRow($sql, $params);
     }
 
@@ -186,18 +259,19 @@ class ComentarioHandler
         INNER JOIN ctg_marcas ma USING(id_marca)
         WHERE mo.id_marca LIKE ? OR estado="A"
         ORDER BY mo.descripcion';
-            /*'SELECT id_producto, imagen_producto, nombre_producto, nombre_producto, precio_producto, existencias_producto
-                FROM producto
-                INNER JOIN categoria USING(id_categoria)
-                WHERE id_categoria = ? AND estado_producto = true
-                ORDER BY nombre_producto'*/;
+        /*'SELECT id_producto, imagen_producto, nombre_producto, nombre_producto, precio_producto, existencias_producto
+            FROM producto
+            INNER JOIN categoria USING(id_categoria)
+            WHERE id_categoria = ? AND estado_producto = true
+            ORDER BY nombre_producto'*/
+        ;
         $params = array($this->categoria);
         return Database::getRows($sql, $params);
     }
 
     /*
-    *   Métodos para generar gráficos.
-    */
+     *   Métodos para generar gráficos.
+     */
     public function cantidadProductosCategoria()
     {
         $sql = 'SELECT nombre_categoria, COUNT(id_producto) cantidad
@@ -217,8 +291,8 @@ class ComentarioHandler
     }
 
     /*
-    *   Métodos para generar reportes.
-    */
+     *   Métodos para generar reportes.
+     */
     public function productosCategoria()
     {
         $sql = 'SELECT nombre_producto, precio_producto, estado_producto

@@ -33,8 +33,14 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.getElementById('nombreProducto').textContent = DATA.dataset.nombre_producto;
         document.getElementById('descripcionProducto').textContent = DATA.dataset.descripcion_producto;
         document.getElementById('precioProducto').textContent = DATA.dataset.precio_producto;
-        document.getElementById('existenciasProducto').textContent = DATA.dataset.existencia_producto;
+        document.getElementById('existenciasProducto').textContent = DATA.dataset.existencia_producto   ;
         document.getElementById('idProducto').value = DATA.dataset.id_producto;
+        
+        BTNCOMENTARIO.innerHTML =
+            `<button style="color: white;" type="button" class="btn btn-info" onclick="openComentario(${PARAMS.get('id')})">
+            <i class="bi bi-chat-dots"></i> Comentarios
+        </button> `;
+
     } else {
         // Se presenta un mensaje de error cuando no existen datos para mostrar.
         document.getElementById('mainTitle').textContent = DATA.error;
@@ -42,6 +48,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.getElementById('detalle').innerHTML = '';
     }
 });
+
+
 
 // Método del evento para cuando se envía el formulario de agregar un producto al carrito.
 SHOPPING_FORM.addEventListener('submit', async (event) => {
