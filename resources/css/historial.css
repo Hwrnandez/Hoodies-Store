@@ -1,0 +1,76 @@
+/*color a letra del menú de navegación*/
+#historial {
+    color: #A8E910;
+}
+
+#fondo {
+    background-color: transparent !important;
+    border-color: transparent !important;
+}
+
+
+/*espacio para la divicion de la secion*/
+section {
+    padding: 80px 0;
+    overflow: hidden;
+}
+
+/*estilo y color a la letra*/
+#text {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #000000;
+}
+
+
+main {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+/*contenedor para boton asignar, imagen y la tabla de dministracion de clientes*/
+.container-xl {
+    padding: 50px;
+    border-radius: 10px;
+}
+
+/*estilo y color de tabla administracion de empleados*/
+#tabla {
+    background-color: #0C3A6B;
+    color: #FFFFFF;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+/*espacio a la imagen*/
+#icon {
+    padding: 10px;
+}
+
+#table {
+    background-color: #0C3A6B;
+    color: #FFFFFF;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+#padding {
+    padding: 10px;
+}
+
+#row {
+    padding: 10px;
+}
+
+
+.table-responsive {
+    padding: 20px;
+}
+
+#detalle{
+    color: white;
+    border-color: #458CC6;
+    border-radius: 25px;
+    border: 5px solid #458CC6;
+}
+
+.btn3{
+    background-color: #458CC6;
+    color: white;
+}
