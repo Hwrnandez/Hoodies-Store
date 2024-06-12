@@ -44,16 +44,18 @@ const loadTemplate = async () => {
                                         <a class="nav-link" href="index.html">Categoria</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="perfil.html">Perfil</a>
+                                        <a class="nav-link" href="historial.html">Historial de compras</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="carrito.html"><i class="bi bi-cart"></i>Carrito</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="perfil.html">Perfil</a>
                                     </li>
                                     <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Cuenta: <b>${DATA.username}</b></a>
                                         <ul class="dropdown-menu"> 
                                             <li><a class="dropdown-item" href="#" onclick="logOut()">Cerrar sesión</a></li>
-                                            <li><a class="dropdown-item" href="#" onclick="logOut()">Editar perfil</a></li>
                                         </ul>
                                     </li>
                                 </ul>
@@ -98,9 +100,6 @@ const loadTemplate = async () => {
                                 <ul class="navbar-nav ms-auto">
                                     <li class="nav-item">
                                         <a class="nav-link" href="index.html">Categoria</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="perfil.html">Perfil</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="carrito.html"<i class="bi bi-cart"></i>Carrito</a>
