@@ -72,7 +72,7 @@ foreign key (id_producto) references producto (id_producto),
 cantidad_producto int not null,
 precio_producto numeric (5,2) not null
 );
-
+ 
 CREATE TABLE valoracion(
 id_comentario INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
 descripcion_comentario VARCHAR(250) NOT NULL,
@@ -88,12 +88,19 @@ CONSTRAINT fk_valoracion_producto
 FOREIGN KEY (id_producto)
 REFERENCES producto (id_producto)
 );
-
-CREATE TABLE comentarios(
+ 
+ 
+ 
+CREATE TABLE comentario(
 id_comentario INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-descripcion_comentario VARCHAR(250) NOT NULL,
+contenido_comentario VARCHAR(250) NOT NULL,
 fecha_comentario DATE DEFAULT current_timestamp(),
 estado_comentario BOOLEAN NOT NULL,
+puntuacion_comentario INT NOT NULL,
+id_detalle INT NOT NULL,
+CONSTRAINT FK_id_detalle
+FOREIGN KEY (id_detalle)
+REFERENCES detalle_pedido (id_detalle),
 id_cliente INT NOT NULL,
 CONSTRAINT fk__cliente
 FOREIGN KEY (id_cliente)
@@ -103,3 +110,97 @@ CONSTRAINT fk_comentario_producto
 FOREIGN KEY (id_producto)
 REFERENCES producto (id_producto)
 );
+SELECT 
+    cm.id_producto,
+    cm.id_comentario,
+    cm.id_detalle,
+    CONCAT(c.nombre_cliente, " ", c.apellido_cliente) AS cliente,
+    mo.nombre_producto AS modelo,
+    cm.contenido_comentario,
+    cm.puntuacion_comentario,
+    cm.estado_comentario,
+    DATE_FORMAT(cm.fecha_comentario, "%d-%m-%Y - %h:%i %p") AS fecha_comentario
+FROM 
+    comentario cm
+INNER JOIN 
+    detalle_pedido dp ON cm.id_detalle = dp.id_detalle
+INNER JOIN 
+    pedido p ON dp.id_pedido = p.id_pedido
+INNER JOIN 
+    cliente c ON cm.id_cliente = c.id_cliente
+INNER JOIN 
+    producto mo ON cm.id_producto = mo.id_producto
+INNER JOIN 
+    marca ma ON mo.id_marca = ma.id_marca
+WHERE 
+    cm.id_detalle = 1
+ORDER BY 
+    cm.puntuacion_comentario DESC
+LIMIT
+ 
+ 
+ 
+        
+insert into valoracion (descripcion_comentario, puntuacion, estado_comentario, id_cliente, id_producto) VALUES
+(?, ?, 1, ?, ?);
+INSERT INTO categoria (descripcion_categoria, nombre_categoria, img_categoria) VALUES 
+('Hoodies hombre', 'Hombre', 'default.png'),
+('Hoodies mujer', 'Mujer', 'default.png');
+INSERT INTO marca (nombre_marca, imagen_marca) VALUES 
+('Nike', 'default.png'),
+('Adidas', 'default.png'),
+('Puma', 'default.png'),
+('Under Armour', 'default.png'),
+('Reebok', 'default.png'),
+('New Balance', 'default.png'),
+('Converse', 'default.png'),
+('Vans', 'default.png'),
+('Fila', 'default.png'),
+('Lacoste', 'default.png');
+INSERT INTO producto (id_categoria_hoodie, id_marca, nombre_producto, descripcion_producto, precio_producto, id_administrador, estado_producto, imagen_producto, existencia_producto) VALUES 
+(1, 1, 'Hoodie Nike Rojo', 'Hoodie de color rojo de la marca Nike', 49.99, 1, true, 'default.png', 100),
+(2, 2, 'Hoodie Nike negro', 'Hoodie de color negro', 79.99, 1, true, 'default.png', 150);
+INSERT INTO valoracion (descripcion_comentario, puntuacion, estado_comentario, id_cliente, id_producto) VALUES 
+('¡El producto es increíble! Me encanta la calidad y el diseño.', 5, true, 1, 1),
+('Buen producto, aunque el envío fue un poco lento.', 4, true, 2, 2);   
+INSERT INTO cliente (nombre_cliente, apellido_cliente, telefono_cliente, direccion_cliente, estado_cliente, correo_cliente, clave_cliente) VALUES 
+('Juan', 'Pérez', 1234567890, 'Calle 123, Ciudad X', true, 'juan@example.com', 'clave123'),
+('María', 'Gómez', 9876543210, 'Avenida Principal, Ciudad Y', true, 'maria@example.com', 'clave456'),
+('Carlos', 'Martínez', 5551234567, 'Carrera 45, Ciudad Z', true, 'carlos@example.com', 'clave789'),
+('Ana', 'López', 3334445556, 'Avenida Central, Ciudad W', true, 'ana@example.com', 'claveabc'),
+('Pedro', 'Rodríguez', 7778889990, 'Calle 67, Ciudad V', true, 'pedro@example.com', 'clavexyz'),
+('Laura', 'Hernández', 1112223334, 'Calle 89, Ciudad U', true, 'laura@example.com', 'clave1234'),
+('Sofía', 'Díaz', 6667778889, 'Carrera 10, Ciudad T', true, 'sofia@example.com', 'clave5678'),
+('Pablo', 'García', 4445556667, 'Avenida Sur, Ciudad S', true, 'pablo@example.com', 'clave90ab'),
+('Elena', 'Torres', 2223334445, 'Calle Este, Ciudad R', true, 'elena@example.com', 'clavecdef'),
+('Javier', 'Fernández', 8889990001, 'Calle Oeste, Ciudad Q', true, 'javier@example.com', 'claveghij'),
+('Luisa', 'Suárez', 1113335557, 'Avenida Norte, Ciudad P', true, 'luisa@example.com', 'claveklmn'),
+('Diego', 'Vargas', 7778881113, 'Calle 11, Ciudad O', true, 'diego@example.com', 'claveopqr'),
+('Valentina', 'Ramírez', 3334447772, 'Carrera 30, Ciudad N', true, 'valentina@example.com', 'clavestuv'),
+('Andrés', 'López', 9990001114, 'Avenida 5, Ciudad M', true, 'andres@example.com', 'clavewxyz'),
+('Gabriela', 'Castro', 4445558885, 'Calle 22, Ciudad L', true, 'gabriela@example.com', 'clave12345'),
+('Mateo', 'Gutierrez', 6667772220, 'Carrera 40, Ciudad K', true, 'mateo@example.com', 'clave67890'),
+('Camila', 'Sánchez', 2223336668, 'Avenida 15, Ciudad J', true, 'camila@example.com', 'claveabcde'),
+('Daniel', 'Martínez', 8889992222, 'Calle 33, Ciudad I', true, 'daniel@example.com', 'clavefghij'),
+('Isabella', 'Chávez', 1112223339, 'Carrera 25, Ciudad H', true, 'isabella@example.com', 'claveklmno');
+INSERT INTO pedido (estado_pedido, fecha_regristo_pedido, direccion_pedido, id_cliente) VALUES
+('Pendiente', '2024-05-01', 'Calle Sol 123, Ciudad Metrópolis', 1),
+('Finalizado', '2024-05-02', 'Avenida Luna 456, Ciudad Estrella', 2),
+('Entregado', '2024-05-03', 'Carrera Galaxia 789, Ciudad Nebulosa', 3),
+('Pendiente', '2024-05-04', 'Calle Espacial 321, Ciudad Cósmica', 4),
+('Finalizado', '2024-05-05', 'Avenida Saturno 654, Ciudad Interplanetaria', 5),
+('Entregado', '2024-05-06', 'Carrera Andrómeda 987, Ciudad Celestial', 6),
+('Pendiente', '2024-05-07', 'Calle Marte 210, Ciudad Astral', 7),
+('Finalizado', '2024-05-08', 'Avenida Mercurio 543, Ciudad Galáctica', 8),
+('Entregado', '2024-05-09', 'Carrera Plutón 876, Ciudad Universal', 9),
+('Pendiente', '2024-05-10', 'Calle Júpiter 135, Ciudad Nebulosa', 10),
+('Finalizado', '2024-05-11', 'Avenida Venus 468, Ciudad Metrópolis', 11),
+('Entregado', '2024-05-12', 'Carrera Tierra 791, Ciudad Estrella', 12),
+('Pendiente', '2024-05-13', 'Calle Urano 234, Ciudad Cósmica', 13),
+('Finalizado', '2024-05-14', 'Avenida Neptuno 567, Ciudad Interplanetaria', 14),
+('Entregado', '2024-05-15', 'Carrera Marte 890, Ciudad Celestial', 15),
+('Pendiente', '2024-05-16', 'Calle Saturno 321, Ciudad Astral', 16),
+('Finalizado', '2024-05-17', 'Avenida Mercurio 654, Ciudad Galáctica', 17),
+('Entregado', '2024-05-18', 'Carrera Plutón 987, Ciudad Universal', 18),
+('Pendiente', '2024-05-19', 'Calle Júpiter 210, Ciudad Nebulosa', 19);
+ 
