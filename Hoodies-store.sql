@@ -110,39 +110,7 @@ CONSTRAINT fk_comentario_producto
 FOREIGN KEY (id_producto)
 REFERENCES producto (id_producto)
 );
-SELECT 
-    cm.id_producto,
-    cm.id_comentario,
-    cm.id_detalle,
-    CONCAT(c.nombre_cliente, " ", c.apellido_cliente) AS cliente,
-    mo.nombre_producto AS modelo,
-    cm.contenido_comentario,
-    cm.puntuacion_comentario,
-    cm.estado_comentario,
-    DATE_FORMAT(cm.fecha_comentario, "%d-%m-%Y - %h:%i %p") AS fecha_comentario
-FROM 
-    comentario cm
-INNER JOIN 
-    detalle_pedido dp ON cm.id_detalle = dp.id_detalle
-INNER JOIN 
-    pedido p ON dp.id_pedido = p.id_pedido
-INNER JOIN 
-    cliente c ON cm.id_cliente = c.id_cliente
-INNER JOIN 
-    producto mo ON cm.id_producto = mo.id_producto
-INNER JOIN 
-    marca ma ON mo.id_marca = ma.id_marca
-WHERE 
-    cm.id_detalle = 1
-ORDER BY 
-    cm.puntuacion_comentario DESC
-LIMIT
  
- 
- 
-        
-insert into valoracion (descripcion_comentario, puntuacion, estado_comentario, id_cliente, id_producto) VALUES
-(?, ?, 1, ?, ?);
 INSERT INTO categoria (descripcion_categoria, nombre_categoria, img_categoria) VALUES 
 ('Hoodies hombre', 'Hombre', 'default.png'),
 ('Hoodies mujer', 'Mujer', 'default.png');
