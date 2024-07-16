@@ -30,7 +30,7 @@ class ProductoHandler
         $value = '%' . Validator::getSearchValue() . '%';
         $sql = 'SELECT id_producto, imagen_producto, nombre_producto, descripcion_producto, precio_producto, nombre_categoria, nombre_marca, estado_producto
                 FROM producto
-                INNER JOIN categoria USING(id_categoria_hoodie)
+                INNER JOIN categoria USING(id_categoria_hoodie_hoodie)
                 INNER JOIN marca USING(id_marca)
                 WHERE nombre_producto LIKE ? OR descripcion_producto LIKE ?
                 ORDER BY nombre_producto';
@@ -40,7 +40,7 @@ class ProductoHandler
 
     public function createRow()
     {
-        $sql = 'INSERT INTO producto(nombre_producto, descripcion_producto, precio_producto, existencia_producto, imagen_producto, estado_producto, id_categoria_hoodie, id_marca, id_administrador)
+        $sql = 'INSERT INTO producto(nombre_producto, descripcion_producto, precio_producto, existencia_producto, imagen_producto, estado_producto, id_categoria_hoodie_hoodie, id_marca, id_administrador)
                 VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)';
         $params = array($this->nombre, $this->descripcion, $this->precio, $this->existencias, $this->imagen, $this->estado, $this->categoria, $this->marca, $_SESSION['idAdministrador']);
         return Database::executeRow($sql, $params);
@@ -50,7 +50,7 @@ class ProductoHandler
     {
         $sql = 'SELECT id_producto, nombre_producto, descripcion_producto, precio_producto, existencia_producto, imagen_producto, estado_producto, nombre_categoria, nombre_marca
                 FROM producto
-                INNER JOIN categoria USING(id_categoria_hoodie)
+                INNER JOIN categoria USING(id_categoria_hoodie_hoodie)
                 INNER JOIN marca USING(id_marca)
                 ORDER BY nombre_producto';
         return Database::getRows($sql);
@@ -60,7 +60,7 @@ class ProductoHandler
     {
         $sql = 'SELECT id_producto, nombre_categoria, nombre_marca, nombre_producto, descripcion_producto, precio_producto,  estado_producto, imagen_producto, existencia_producto
                 FROM producto
-                INNER JOIN categoria USING(id_categoria_hoodie) 
+                INNER JOIN categoria USING(id_categoria_hoodie_hoodie) 
                 INNER JOIN marca USING(id_marca)
                 WHERE id_producto = ?';
         $params = array($this->id);
@@ -79,7 +79,7 @@ class ProductoHandler
     public function updateRow()
     {
         $sql = 'UPDATE producto
-                SET imagen_producto = ?, nombre_producto = ?, descripcion_producto = ?, precio_producto = ?, existencia_producto = ?, estado_producto = ?, id_categoria_hoodie = ?, id_marca = ?
+                SET imagen_producto = ?, nombre_producto = ?, descripcion_producto = ?, precio_producto = ?, existencia_producto = ?, estado_producto = ?, id_categoria_hoodie_hoodie = ?, id_marca = ?
                 WHERE id_producto = ?';
         $params = array($this->imagen, $this->nombre, $this->descripcion, $this->precio, $this->existencias, $this->estado, $this->categoria, $this->marca, $this->id);
         return Database::executeRow($sql, $params);
@@ -97,8 +97,8 @@ class ProductoHandler
     {
         $sql = 'SELECT id_producto, imagen_producto, nombre_producto, descripcion_producto, precio_producto, existencia_producto
         FROM producto
-        INNER JOIN categoria USING(id_categoria_hoodie)
-        WHERE id_categoria_hoodie = ? AND estado_producto = true
+        INNER JOIN categoria USING(id_categoria_hoodie_hoodie)
+        WHERE id_categoria_hoodie_hoodie = ? AND estado_producto = true
         ORDER BY nombre_producto';
         $params = array($this->categoria);
         return Database::getRows($sql, $params);
@@ -122,16 +122,16 @@ class ProductoHandler
     {
         $sql = 'SELECT nombre_categoria, COUNT(id_producto) cantidad
                 FROM producto
-                INNER JOIN categoria USING(id_categoria)
+                INNER JOIN categoria USING(id_categoria_hoodie)
                 GROUP BY nombre_categoria ORDER BY cantidad DESC LIMIT 5';
         return Database::getRows($sql);
     }
 
     public function porcentajeProductosCategoria()
     {
-        $sql = 'SELECT nombre_categoria, ROUND((COUNT(id_producto) * 100.0 / (SELECT COUNT(id_producto) FROM productos)), 2) porcentaje
+        $sql = 'SELECT nombre_categoria, ROUND((COUNT(id_producto) * 100.0 / (SELECT COUNT(id_producto) FROM producto)), 2) porcentaje
                 FROM producto
-                INNER JOIN categoria USING(id_categoria)
+                INNER JOIN categoria  USING(id_categoria_hoodie)
                 GROUP BY nombre_categoria ORDER BY porcentaje DESC';
         return Database::getRows($sql);
     }
@@ -143,8 +143,8 @@ class ProductoHandler
     {
         $sql = 'SELECT nombre_producto, precio_producto, estado_producto
                 FROM producto
-                INNER JOIN categoria USING(id_categoria_hoodie)
-                WHERE id_categoria_hoodie = ?
+                INNER JOIN categoria USING(id_categoria_hoodie_hoodie)
+                WHERE id_categoria_hoodie_hoodie = ?
                 ORDER BY nombre_producto';
         $params = array($this->categoria);
         return Database::getRows($sql, $params);
