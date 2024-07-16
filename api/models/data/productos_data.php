@@ -101,7 +101,7 @@ class ProductoData extends ProductoHandler
             $this->marca = $value;
             return true;
         } else {
-            $this->data_error = 'El identificador de la categoría es incorrecto';
+            $this->data_error = 'El identificador de la marca es incorrecto';
             return false;
         }
     }

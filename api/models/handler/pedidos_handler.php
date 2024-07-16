@@ -16,7 +16,6 @@ class PedidoHandler
     protected $producto = null; 
     protected $cantidad = null;
     protected  $estado = null;
-    protected $finalizado = 'Finalizado';
 
     // Constante para establecer la ruta de las imágenes.
     const RUTA_IMAGEN = '../../images/productos/';
@@ -158,10 +157,9 @@ class PedidoHandler
         $sql = 'SELECT p.id_pedido,CONCAT(c.nombre_cliente," ",c.apellido_cliente) as cliente,
         DATE_FORMAT(p.fecha_regristo_pedido, "%d-%m-%Y") AS fecha, p.estado_pedido, p.direccion_pedido
         FROM pedido p
-        INNER JOIN cliente c USING(id_cliente) WHERE p.estado_pedido = ?
-        ORDER BY p.fecha_regristo_pedido DESC, p.estado_pedido DESC';
-        $params = array($this->finalizado);
-        return Database::getRows($sql, $params);
+        INNER JOIN cliente c USING(id_cliente)
+        ORDER BY p.estado_pedido DESC';
+        return Database::getRows($sql);
     }
 
 
