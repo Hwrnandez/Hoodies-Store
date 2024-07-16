@@ -1,13 +1,13 @@
 <?php
 // Se incluye la clase del modelo.
-require_once('api\models\handler\valoraciones_data.php');
+require_once('../../models/data/valoraciones_data.php');
 
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if (isset($_GET['action'])) {
     // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en el script.
     session_start();
     // Se instancia la clase correspondiente.
-    $pedido = new ComentarioData;
+    $valoracion = new ComentarioData;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'session' => 0, 'message' => null, 'error' => null, 'exception' => null, 'dataset' => null);
     // Se verifica si existe una sesión iniciada como cliente para realizar las acciones correspondientes.
@@ -17,12 +17,12 @@ if (isset($_GET['action'])) {
             case 'createRow':
                 $_POST = Validator::validateForm($_POST);
                 if (
-                    !$pedido->setIdDetalle($_POST['idDetalle'])or
-                    !$pedido->setMensaje($_POST['contenidoComentario'])or
-                    !$pedido->setPuntuacion($_POST['starValue'])
+                    !$valoracion->setIdDetalle($_POST['idDetalle'])or
+                    !$valoracion->setMensaje($_POST['contenidoComentario'])or
+                    !$valoracion->setPuntuacion($_POST['starValue'])
                 ) {
-                    $result['error'] = $pedido->getDataError();
-                } elseif ($pedido->createRow()) {
+                    $result['error'] = $valoracion->getDataError();
+                } elseif ($valoracion->createRow()) {
                     $result['status'] = 1;
                     $result['message'] = 'Comentario enviado correctamente';
                     // Se asigna el estado del archivo después de insertar.
@@ -34,10 +34,10 @@ if (isset($_GET['action'])) {
             // Acción para obtener los productos agregados en el carrito de compras.
         case 'readAllActive':
             if (
-                !$pedido->setIdProducto($_POST['idModelo'])
+                !$valoracion->setIdProducto($_POST['idModelo'])
             ) {
-                $result['error'] = $pedido->getDataError();
-            } elseif ($result['dataset'] = $pedido->readAllActive()) {
+                $result['error'] = $valoracion->getDataError();
+            } elseif ($result['dataset'] = $valoracion->readAllActive()) {
                 $result['status'] = 1;
                 $result['message'] = count($result['dataset']);
             } else {
@@ -46,10 +46,10 @@ if (isset($_GET['action'])) {
             break;
             case 'readByIdDetalle':
                 if (
-                    !$pedido->setIdDetalle($_POST['idDetalle'])
+                    !$valoracion->setIdDetalle($_POST['idDetalle'])
                 ) {
-                    $result['error'] = $pedido->getDataError();
-                } elseif ($result['dataset'] = $pedido->readByIdDetalle()) {
+                    $result['error'] = $valoracion->getDataError();
+                } elseif ($result['dataset'] = $valoracion->readByIdDetalle()) {
                     $result['status'] = 1;
                 } else {
                     $result['status'] = 0;
@@ -58,10 +58,10 @@ if (isset($_GET['action'])) {
                 break;
             case 'readByIdComentario':
                     if (
-                        !$pedido->setId($_POST['idComentario'])
+                        !$valoracion->setId($_POST['idComentario'])
                     ) {
-                        $result['error'] = $pedido->getDataError();
-                    } elseif ($result['dataset'] = $pedido->readByIdComentario()) {
+                        $result['error'] = $valoracion->getDataError();
+                    } elseif ($result['dataset'] = $valoracion->readByIdComentario()) {
                         $result['status'] = 1;
                     } else {
                         $result['error'] = 'No hay comentarios de este modelo';
@@ -71,11 +71,11 @@ if (isset($_GET['action'])) {
             /*case 'updateDetail':
                 $_POST = Validator::validateForm($_POST);
                 if (
-                    !$pedido->setIdDetalle($_POST['idDetalle']) or
-                    !$pedido->setCantidad($_POST['cantidadModelo'])
+                    !$valoracion->setIdDetalle($_POST['idDetalle']) or
+                    !$valoracion->setCantidad($_POST['cantidadModelo'])
                 ) {
-                    $result['error'] = $pedido->getDataError();
-                } elseif ($pedido->updateDetail()) {
+                    $result['error'] = $valoracion->getDataError();
+                } elseif ($valoracion->updateDetail()) {
                     $result['status'] = 1;
                     $result['message'] = 'Cantidad modificada correctamente';
                 } else {
@@ -84,9 +84,9 @@ if (isset($_GET['action'])) {
                 break;
             // Acción para remover un producto del carrito de compras.
             case 'deleteDetail':
-                if (!$pedido->setIdDetalle($_POST['idDetalle'])) {
-                    $result['error'] = $pedido->getDataError();
-                } elseif ($pedido->deleteDetail()) {
+                if (!$valoracion->setIdDetalle($_POST['idDetalle'])) {
+                    $result['error'] = $valoracion->getDataError();
+                } elseif ($valoracion->deleteDetail()) {
                     $result['status'] = 1;
                     $result['message'] = 'Producto removido correctamente';
                 } else {
@@ -95,11 +95,11 @@ if (isset($_GET['action'])) {
                 break;
             // Acción para finalizar el carrito de compras.
             case 'finishOrder':
-                if ($pedido->finishOrder()) {
+                if ($valoracion->finishOrder()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Pedido finalizado correctamente';
+                    $result['message'] = 'valoracion$valoracion finalizado correctamente';
                 } else {
-                    $result['error'] = 'Ocurrió un problema al finalizar el pedido';
+                    $result['error'] = 'Ocurrió un problema al finalizar el valoracion$valoracion';
                 }
                 break;
             default:

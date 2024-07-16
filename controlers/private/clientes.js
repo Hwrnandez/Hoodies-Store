@@ -125,3 +125,11 @@ const openUpdate = async (id) => {
         sweetAlert(2, DATA.error, false);
     }
 }
+
+const openReport = () => {
+    // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
+    const PATH = new URL(`${SERVER_URL}reports/private/cliente.php`);
+    // Se agrega un parámetro a la ruta con el valor del registro seleccionado.
+    // Se abre el reporte en una nueva pestaña.
+    window.open(PATH.href);
+}

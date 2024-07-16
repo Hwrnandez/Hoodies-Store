@@ -23,9 +23,6 @@ class ComentarioHandler
     protected $categoria = null;
     protected $estado = null;
 
-    // Constante para establecer la ruta de las imágenes.
-    const RUTA_IMAGEN = '../../images/modelos/';
-
     /*
      *   Métodos para realizar las operaciones SCRUD (search, create, read, update, and delete).
      */
