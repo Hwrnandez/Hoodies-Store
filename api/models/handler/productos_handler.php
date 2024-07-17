@@ -30,7 +30,7 @@ class ProductoHandler
         $value = '%' . Validator::getSearchValue() . '%';
         $sql = 'SELECT id_producto, imagen_producto, nombre_producto, descripcion_producto, precio_producto, nombre_categoria, nombre_marca, estado_producto
                 FROM producto
-                INNER JOIN categoria USING(id_categoria_hoodie_hoodie)
+                INNER JOIN categoria USING(id_categoria_hoodie)
                 INNER JOIN marca USING(id_marca)
                 WHERE nombre_producto LIKE ? OR descripcion_producto LIKE ?
                 ORDER BY nombre_producto';
