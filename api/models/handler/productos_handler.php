@@ -164,8 +164,8 @@ class ProductoHandler
     public function cantidadProductosMarca()
     {
         $sql = 'SELECT nombre_marca, COUNT(id_marca) cantidad
-                FROM productos
-                INNER JOIN marcas USING(id_marca)
+                FROM producto
+                INNER JOIN marca USING(id_marca)
                 GROUP BY nombre_marca ORDER BY cantidad DESC LIMIT 5';
         return Database::getRows($sql);
     }
