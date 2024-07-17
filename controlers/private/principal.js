@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loadTemplate();
 
     graficoPastelCategorias();
+    graficoBarrasMarcas ();
 });
 
     /*
@@ -32,4 +33,26 @@ const graficoPastelCategorias = async () => {
         document.getElementById('chart1').remove();
         console.log(DATA.error);
     }
-};
+}
+
+const graficoBarrasMarcas = async () => {
+    // Petición para obtener los datos del gráfico.
+    const DATA = await fetchData(PRODUCTO_API, 'cantidadProductosMarca');
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se remueve la etiqueta canvas.
+    if (DATA.status) {
+        // Se declaran los arreglos para guardar los datos a graficar.
+        let marcas = [];
+        let cantidades = [];
+        // Se recorre el conjunto de registros fila por fila a través del objeto row.
+        DATA.dataset.forEach(row => {
+            // Se agregan los datos a los arreglos.
+            marcas.push(row.nombre_marca);
+            cantidades.push(row.cantidad);
+        });
+        // Llamada a la función para generar y mostrar un gráfico de barras. Se encuentra en el archivo components.js
+        barGraph('chart2', marcas, cantidades, 'Cantidad de productos', 'Cantidad de productos por marcas');
+    } else {
+        document.getElementById('chart2').remove();
+        console.log(DATA.error);
+    }
+}
