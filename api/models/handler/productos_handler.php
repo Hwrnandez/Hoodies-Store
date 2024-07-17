@@ -40,7 +40,7 @@ class ProductoHandler
 
     public function createRow()
     {
-        $sql = 'INSERT INTO producto(nombre_producto, descripcion_producto, precio_producto, existencia_producto, imagen_producto, estado_producto, id_categoria_hoodie_hoodie, id_marca, id_administrador)
+        $sql = 'INSERT INTO producto(nombre_producto, descripcion_producto, precio_producto, existencia_producto, imagen_producto, estado_producto, id_categoria_hoodie, id_marca, id_administrador)
                 VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)';
         $params = array($this->nombre, $this->descripcion, $this->precio, $this->existencias, $this->imagen, $this->estado, $this->categoria, $this->marca, $_SESSION['idAdministrador']);
         return Database::executeRow($sql, $params);
@@ -50,7 +50,7 @@ class ProductoHandler
     {
         $sql = 'SELECT id_producto, nombre_producto, descripcion_producto, precio_producto, existencia_producto, imagen_producto, estado_producto, nombre_categoria, nombre_marca
                 FROM producto
-                INNER JOIN categoria USING(id_categoria_hoodie_hoodie)
+                INNER JOIN categoria USING(id_categoria_hoodie)
                 INNER JOIN marca USING(id_marca)
                 ORDER BY nombre_producto';
         return Database::getRows($sql);
@@ -60,7 +60,7 @@ class ProductoHandler
     {
         $sql = 'SELECT id_producto, nombre_categoria, nombre_marca, nombre_producto, descripcion_producto, precio_producto,  estado_producto, imagen_producto, existencia_producto
                 FROM producto
-                INNER JOIN categoria USING(id_categoria_hoodie_hoodie) 
+                INNER JOIN categoria USING(id_categoria_hoodie) 
                 INNER JOIN marca USING(id_marca)
                 WHERE id_producto = ?';
         $params = array($this->id);
@@ -97,7 +97,7 @@ class ProductoHandler
     {
         $sql = 'SELECT id_producto, imagen_producto, nombre_producto, descripcion_producto, precio_producto, existencia_producto
         FROM producto
-        INNER JOIN categoria USING(id_categoria_hoodie_hoodie)
+        INNER JOIN categoria USING(id_categoria_hoodie)
         WHERE id_categoria_hoodie_hoodie = ? AND estado_producto = true
         ORDER BY nombre_producto';
         $params = array($this->categoria);
@@ -143,7 +143,7 @@ class ProductoHandler
     {
         $sql = 'SELECT nombre_producto, precio_producto, estado_producto
                 FROM producto
-                INNER JOIN categoria USING(id_categoria_hoodie_hoodie)
+                INNER JOIN categoria USING(id_categoria_hoodie)
                 WHERE id_categoria_hoodie_hoodie = ?
                 ORDER BY nombre_producto';
         $params = array($this->categoria);
