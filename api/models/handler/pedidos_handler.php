@@ -13,7 +13,7 @@ class PedidoHandler
     protected $id_pedido = null;
     protected $id_detalle = null;
     protected $cliente = null;
-    protected $producto = null; 
+    protected $producto = null;
     protected $cantidad = null;
     protected  $estado = null;
 
@@ -175,5 +175,25 @@ class PedidoHandler
         //$_SESSION['idmod'] = $data['id_modelo'];
 
         return $data;
+    }
+
+    /*
+    *   Métodos para generar gráficos.
+    */
+    public function CantidadEstadoPedidos()
+    {
+        $sql = 'SELECT estado_pedido, COUNT(id_detalle) cantidad
+                FROM detalle_pedido
+                INNER JOIN pedido USING(id_pedido)
+                GROUP BY estado_pedido ORDER BY cantidad DESC LIMIT 5';
+        return Database::getRows($sql);
+    }
+
+    public function PorcentajeEstadoPedidos()
+    {
+        $sql = 'SELECT estado_pedido, COUNT(*) as cantidad_pedidos
+                FROM pedido
+                GROUP BY estado_pedido';
+        return Database::getRows($sql);
     }
 }
