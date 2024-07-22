@@ -98,7 +98,7 @@ class ProductoHandler
         $sql = 'SELECT id_producto, imagen_producto, nombre_producto, descripcion_producto, precio_producto, existencia_producto
         FROM producto
         INNER JOIN categoria USING(id_categoria_hoodie)
-        WHERE id_categoria_hoodie_hoodie = ? AND estado_producto = true
+        WHERE id_categoria_hoodie = ? AND estado_producto = true
         ORDER BY nombre_producto';
         $params = array($this->categoria);
         return Database::getRows($sql, $params);
@@ -144,7 +144,7 @@ class ProductoHandler
         $sql = 'SELECT nombre_producto, precio_producto, estado_producto
                 FROM producto
                 INNER JOIN categoria USING(id_categoria_hoodie)
-                WHERE id_categoria_hoodie_hoodie = ?
+                WHERE id_categoria_hoodie = ?
                 ORDER BY nombre_producto';
         $params = array($this->categoria);
         return Database::getRows($sql, $params);
@@ -154,7 +154,7 @@ class ProductoHandler
     {
         $sql = 'SELECT nombre_producto, precio_producto, estado_producto
                 FROM producto
-                INNER JOIN marcas USING(id_marca)
+                INNER JOIN marca USING(id_marca)
                 WHERE id_marca = ?
                 ORDER BY nombre_producto';
         $params = array($this->marca);
