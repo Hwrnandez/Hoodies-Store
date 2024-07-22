@@ -1,6 +1,6 @@
 <?php
 // Se incluye la clase para trabajar con la base de datos.
-require_once ('../../helpers/database.php');
+require_once('../../helpers/database.php');
 /*
  *	Clase para manejar el comportamiento de los datos de la tabla PRODUCTO.
  */
@@ -55,7 +55,7 @@ class ComentarioHandler
     {
 
         $sql = 'INSERT INTO comentario(contenido_comentario,fecha_comentario,estado_comentario,puntuacion_comentario, id_detalle) VALUES(?,now(),true,?)';
-        $params = array($this->mensaje, $this->puntuacion, $this->idDetalle, );
+        $params = array($this->mensaje, $this->puntuacion, $this->idDetalle,);
         return Database::executeRow($sql, $params);
     }
 
@@ -88,6 +88,7 @@ LIMIT
     0, 1000;';
         return Database::getRows($sql);
     }
+
     public function readAllActive()
     {
         $sql = 'SELECT 
@@ -256,12 +257,11 @@ ORDER BY
         INNER JOIN ctg_marcas ma USING(id_marca)
         WHERE mo.id_marca LIKE ? OR estado="A"
         ORDER BY mo.descripcion';
-        /*'SELECT id_producto, imagen_producto, nombre_producto, nombre_producto, precio_producto, existencias_producto
+            /*'SELECT id_producto, imagen_producto, nombre_producto, nombre_producto, precio_producto, existencias_producto
             FROM producto
             INNER JOIN categoria USING(id_categoria)
             WHERE id_categoria = ? AND estado_producto = true
-            ORDER BY nombre_producto'*/
-        ;
+            ORDER BY nombre_producto'*/;
         $params = array($this->categoria);
         return Database::getRows($sql, $params);
     }

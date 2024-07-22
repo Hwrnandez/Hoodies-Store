@@ -14,23 +14,23 @@ if (isset($_GET['action'])) {
     // Se compara la acción a realizar cuando un cliente ha iniciado sesión.
     switch ($_GET['action']) {
             // Acción para agregar un producto al carrito de compras.
-            case 'createRow':
-                $_POST = Validator::validateForm($_POST);
-                if (
-                    !$valoracion->setIdDetalle($_POST['idDetalle'])or
-                    !$valoracion->setMensaje($_POST['contenidoComentario'])or
-                    !$valoracion->setPuntuacion($_POST['starValue'])
-                ) {
-                    $result['error'] = $valoracion->getDataError();
-                } elseif ($valoracion->createRow()) {
-                    $result['status'] = 1;
-                    $result['message'] = 'Comentario enviado correctamente';
-                    // Se asigna el estado del archivo después de insertar.
-                    
-                } else {
-                    $result['error'] = 'Ocurrió un problema al registrar';
-                }
-                break;
+        case 'createRow':
+            $_POST = Validator::validateForm($_POST);
+            if (
+                !$valoracion->setIdDetalle($_POST['idDetalle']) or
+                !$valoracion->setMensaje($_POST['contenidoComentario']) or
+                !$valoracion->setPuntuacion($_POST['starValue'])
+            ) {
+                $result['error'] = $valoracion->getDataError();
+            } elseif ($valoracion->createRow()) {
+                $result['status'] = 1;
+                $result['message'] = 'Comentario enviado correctamente';
+                // Se asigna el estado del archivo después de insertar.
+
+            } else {
+                $result['error'] = 'Ocurrió un problema al registrar';
+            }
+            break;
             // Acción para obtener los productos agregados en el carrito de compras.
         case 'readAllActive':
             if (
@@ -44,29 +44,37 @@ if (isset($_GET['action'])) {
                 $result['error'] = 'No hay comentarios de este modelo';
             }
             break;
-            case 'readByIdDetalle':
-                if (
-                    !$valoracion->setIdDetalle($_POST['idDetalle'])
-                ) {
-                    $result['error'] = $valoracion->getDataError();
-                } elseif ($result['dataset'] = $valoracion->readByIdDetalle()) {
-                    $result['status'] = 1;
-                } else {
-                    $result['status'] = 0;
-                    $result['error'] = 'No hay comentarios de este modelo';
-                }
-                break;
-            case 'readByIdComentario':
-                    if (
-                        !$valoracion->setId($_POST['idComentario'])
-                    ) {
-                        $result['error'] = $valoracion->getDataError();
-                    } elseif ($result['dataset'] = $valoracion->readByIdComentario()) {
-                        $result['status'] = 1;
-                    } else {
-                        $result['error'] = 'No hay comentarios de este modelo';
-                    }
-                    break;
+        case 'readByIdDetalle':
+            if (
+                !$valoracion->setIdDetalle($_POST['idDetalle'])
+            ) {
+                $result['error'] = $valoracion->getDataError();
+            } elseif ($result['dataset'] = $valoracion->readByIdDetalle()) {
+                $result['status'] = 1;
+            } else {
+                $result['status'] = 0;
+                $result['error'] = 'No hay comentarios de este modelo';
+            }
+            break;
+        case 'readByIdComentario':
+            if (
+                !$valoracion->setId($_POST['idComentario'])
+            ) {
+                $result['error'] = $valoracion->getDataError();
+            } elseif ($result['dataset'] = $valoracion->readByIdComentario()) {
+                $result['status'] = 1;
+            } else {
+                $result['error'] = 'No hay comentarios de este modelo';
+            }
+            break;
+        case 'readAll':
+            if ($result['dataset'] = $valoracion->readAll()) {
+                $result['status'] = 1;
+                $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
+            } else {
+                $result['error'] = ' No se encontraron registros';
+            }
+            break;
             // Acción para actualizar la cantidad de un producto en el carrito de compras.
             /*case 'updateDetail':
                 $_POST = Validator::validateForm($_POST);
