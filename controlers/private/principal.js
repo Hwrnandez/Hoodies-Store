@@ -6,12 +6,13 @@ document.addEventListener('DOMContentLoaded', () => {
     loadTemplate();
 
     graficoPastelCategorias();
-    graficoBarrasMarcas ();
+    graficoBarrasMarcas();
     graficopastelonCategorias();
     graficoBarrasPedidosEstado();
+    graficaGanancias();
 });
 
-    /*
+/*
 *   Función asíncrona para mostrar un gráfico de pastel con el porcentaje de productos por categoría.
 *   Parámetros: ninguno.
 *   Retorno: ninguno.
@@ -98,9 +99,33 @@ const graficoBarrasPedidosEstado = async () => {
             cantidades.push(row.cantidad);
         });
         // Llamada a la función para generar y mostrar un gráfico de barras. Se encuentra en el archivo components.js
-        barGraph('chart4', estados, cantidades, 'Cantidad de Pedidos por Estado', 'Cantidad de Pedidos por Estado');
+        polarGraph('chart4', estados, cantidades, 'Cantidad de Pedidos por Estado', 'Cantidad de Pedidos por Estado');
     } else {
         document.getElementById('chart4').remove();
+        console.log(DATA.error);
+    }
+}
+
+const graficaGanancias = async () => {
+    // Petición para obtener los datos del gráfico.
+    const DATA = await fetchData(PEDIDO_API, 'prediccionGanancia', null);
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se remueve la etiqueta canvas.
+    if (DATA.status) {
+        // Se declaran los arreglos para guardar los datos a graficar.
+        let mes = [];
+        let ganancia = [];
+        // Se recorre el conjunto de registros fila por fila a través del objeto row.
+        DATA.dataset.forEach(row => {
+            // Se agregan los datos a los arreglos.
+            mes.push(row.nombre_mes);
+            ganancia.push(row.ventas_mensuales);
+        });
+        mes.push(DATA.dataset[0].nombre_siguiente_mes);
+        ganancia.push(DATA.dataset[0].prediccion_siguiente_mes);
+        // Llamada a la función para generar y mostrar un gráfico de barras. Se encuentra en el archivo components.js
+        areaGraph('chart5', mes, ganancia, 'Ganancias $', 'Mes', 'Predicción de ganancia por mes');
+    } else {
+        document.getElementById('chart5').remove();
         console.log(DATA.error);
     }
 }
