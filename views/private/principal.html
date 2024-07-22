@@ -22,16 +22,20 @@
         <h4 class="text-center">
             BIENVENID@S
         </h4>
-        <div class="row justify-content-center mt-4">
-            <div class="col-sm-12 col-md-6 col-lg-4">
-                <canvas id="chart1"></canvas>
-                
-            </div>
-        </div>
-        <div class="row justify-content-center mt-4">
-            <div class="col-sm-12 col-md-6 col-lg-4">
-                <canvas id="chart4"></canvas>
-                
+        <h3 id="mainTitle" class="text-center"></h3>
+        <!-- Contenedor de gráficos -->
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <div class="dashboard-i">
+                        <canvas id="chart1"></canvas>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="dashboard-i">   
+                        <canvas id="chart4"></canvas>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
@@ -89,7 +93,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
         integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
         crossorigin="anonymous"></script>
-        
+
     <!-- Llamada al controlador general de la aplicación -->
     <script src="../../resources/js/sweetalert.min.js"></script>
     <script type="text/javascript" src="../../controlers/utils/components.js"></script>
@@ -98,7 +102,7 @@
     <script type="text/javascript" src="../../controlers/utils/admin.js"></script>
     <!-- Llamada al controlador de la página web -->
     <script type="text/javascript" src="../../controlers/private/principal.js"></script>
-    
+
 </body>
 
 </html>
