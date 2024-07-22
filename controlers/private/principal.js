@@ -15,27 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 *   Retorno: ninguno.
 */
 
-const graficopastelonCategorias = async () => {
-    // Petición para obtener los datos del gráfico.
-    const DATA = await fetchData(PRODUCTO_API, 'cantidadProductosCategoria');
-    // Se comprueba si la respuesta es satisfactoria, de lo contrario se remueve la etiqueta canvas.
-    if (DATA.status) {
-        // Se declaran los arreglos para guardar los datos a graficar.
-        let categorias = [];
-        let cantidades = [];
-        // Se recorre el conjunto de registros fila por fila a través del objeto row.
-        DATA.dataset.forEach(row => {
-            // Se agregan los datos a los arreglos.
-            categorias.push(row.nombre_categoria);
-            cantidades.push(row.cantidad);
-        });
-        // Llamada a la función para generar y mostrar un gráfico de barras. Se encuentra en el archivo components.js
-        pieGraph('chart3', categorias, cantidades, 'Cantidad de productos por categoría');
-    } else {
-        document.getElementById('chart3').remove();
-        console.log(DATA.error);
-    }
-}
+
 const graficoPastelCategorias = async () => {
     // Petición para obtener los datos del gráfico.
     const DATA = await fetchData(PRODUCTO_API, 'porcentajeProductosCategoria');
@@ -76,6 +56,27 @@ const graficoBarrasMarcas = async () => {
         barGraph('chart2', marcas, cantidades, 'Cantidad de productos', 'Cantidad de productos por marcas');
     } else {
         document.getElementById('chart2').remove();
+        console.log(DATA.error);
+    }
+}
+const graficopastelonCategorias = async () => {
+    // Petición para obtener los datos del gráfico.
+    const DATA = await fetchData(PRODUCTO_API, 'cantidadProductosCategoria');
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se remueve la etiqueta canvas.
+    if (DATA.status) {
+        // Se declaran los arreglos para guardar los datos a graficar.
+        let categorias = [];
+        let cantidades = [];
+        // Se recorre el conjunto de registros fila por fila a través del objeto row.
+        DATA.dataset.forEach(row => {
+            // Se agregan los datos a los arreglos.
+            categorias.push(row.nombre_categoria);
+            cantidades.push(row.cantidad);
+        });
+        // Llamada a la función para generar y mostrar un gráfico de barras. Se encuentra en el archivo components.js
+        pieGraph('chart3', categorias, cantidades, 'Cantidad de productos por categoría');
+    } else {
+        document.getElementById('chart3').remove();
         console.log(DATA.error);
     }
 }
