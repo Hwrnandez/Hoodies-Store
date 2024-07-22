@@ -76,7 +76,7 @@ const graficopastelonCategorias = async () => {
             cantidades.push(row.cantidad);
         });
         // Llamada a la función para generar y mostrar un gráfico de barras. Se encuentra en el archivo components.js
-        pieGraph('chart3', categorias, cantidades, 'Cantidad de productos por categoría');
+        doughnutGraph('chart3', categorias, cantidades, 'Cantidad de productos por categoría');
     } else {
         document.getElementById('chart3').remove();
         console.log(DATA.error);
