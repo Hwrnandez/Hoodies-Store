@@ -180,14 +180,14 @@ class PedidoHandler
     /*
     *   Métodos para generar gráficos.
     */
-    public function CantidadEstadoPedidos()
-    {
-        $sql = 'SELECT estado_pedido, COUNT(id_detalle) cantidad
-                FROM detalle_pedido
-                INNER JOIN pedido USING(id_pedido)
-                GROUP BY estado_pedido ORDER BY cantidad DESC LIMIT 5';
-        return Database::getRows($sql);
-    }
+    public function cantidadPedidosEstado()
+{
+    $sql = 'SELECT estado_pedido, COUNT(id_pedido) AS cantidad
+            FROM pedido
+            GROUP BY estado_pedido
+            ORDER BY cantidad DESC;';
+    return Database::getRows($sql);
+}
 
     public function PorcentajeEstadoPedidos()
     {

@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     graficoPastelCategorias();
     graficoBarrasMarcas ();
     graficopastelonCategorias();
-    graficobarraEstado();
+    graficoBarrasPedidosEstado();
 });
 
     /*
@@ -83,22 +83,22 @@ const graficopastelonCategorias = async () => {
     }
 }
 
-const graficobarraEstado = async () => {
+const graficoBarrasPedidosEstado = async () => {
     // Petición para obtener los datos del gráfico.
-    const DATA = await fetchData(PEDIDO_API, 'PorcentajeEstadoPedidos');
+    const DATA = await fetchData(PEDIDO_API, 'cantidadPedidosEstado');
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se remueve la etiqueta canvas.
     if (DATA.status) {
-        // Se declaran los arreglos para guardar los datos a gráficar.
-        let estado = [];
-        let cantidad = [];
+        // Se declaran los arreglos para guardar los datos a graficar.
+        let estados = [];
+        let cantidades = [];
         // Se recorre el conjunto de registros fila por fila a través del objeto row.
         DATA.dataset.forEach(row => {
             // Se agregan los datos a los arreglos.
-            estado.push(row.ESTADO);
-            cantidad.push(row.PEDIDO);
+            estados.push(row.estado_pedido);
+            cantidades.push(row.cantidad);
         });
-        // Llamada a la función para generar y mostrar un gráfico de pastel. Se encuentra en el archivo components.js
-        barGraph('chart4', estado, cantidad);
+        // Llamada a la función para generar y mostrar un gráfico de barras. Se encuentra en el archivo components.js
+        barGraph('chart4', estados, cantidades, 'Cantidad de Pedidos por Estado', 'Cantidad de Pedidos por Estado');
     } else {
         document.getElementById('chart4').remove();
         console.log(DATA.error);

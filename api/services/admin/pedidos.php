@@ -57,15 +57,15 @@ if (isset($_GET['action'])) {
                 }
 
                 break;
-            case 'CantidadEstadoPedidos':
-                if ($result['dataset'] = $pedidos->CantidadEstadoPedidos()) {
+            case 'PorcentajeEstadoPedidos':
+                if ($result['dataset'] = $pedidos->PorcentajeEstadoPedidos()) {
                     $result['status'] = 1;
                 } else {
                     $result['error'] = 'No hay datos disponibles';
                 }
                 break;
-            case 'PorsentajeEstadoPedidos':
-                if ($result['dataset'] = $pedidos->PorcentajeEstadoPedidos()) {
+            case 'cantidadPedidosEstado':
+                if ($result['dataset'] = $pedidos->cantidadPedidosEstado()) {
                     $result['status'] = 1;
                 } else {
                     $result['error'] = 'No hay datos disponibles';
