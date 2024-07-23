@@ -2,7 +2,7 @@
 // Se incluye la clase para trabajar con la base de datos.
 require_once('../../helpers/database.php');
 /*
-*	Clase para manejar el comportamiento de los datos de las tablas PEDIDO y DETALLE_PEDIDO.
+*   Clase para manejar el comportamiento de los datos de las tablas PEDIDO y DETALLE_PEDIDO.
 */
 class PedidoHandler
 {
@@ -16,10 +16,10 @@ class PedidoHandler
     protected $producto = null;
     protected $cantidad = null;
     protected  $estado = null;
-
+ 
     // Constante para establecer la ruta de las imágenes.
     const RUTA_IMAGEN = '../../images/productos/';
-
+ 
     /*
     *   ESTADOS DEL PEDIDO
     *   Pendiente (valor por defecto en la base de datos). Pedido en proceso y se puede modificar el detalle.
@@ -27,7 +27,7 @@ class PedidoHandler
     *   Entregado. Pedido enviado al cliente.
     *   Anulado. Pedido cancelado por el cliente después de ser finalizado.
     */
-
+ 
     /*
     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, and delete).
     */
@@ -46,7 +46,7 @@ class PedidoHandler
             return false;
         }
     }
-
+ 
     // Método para iniciar un pedido en proceso.
     public function startOrder()
     {
@@ -64,7 +64,7 @@ class PedidoHandler
             }
         }
     }
-
+ 
     // Método para agregar un producto al carrito de compras.
     public function createDetail()
     {
@@ -74,7 +74,7 @@ class PedidoHandler
         $params = array($this->producto, $this->producto, $this->cantidad, $_SESSION['idPedido']);
         return Database::executeRow($sql, $params);
     }
-
+ 
     // Método para obtener los productos que se encuentran en el carrito de compras.
     public function readDetail()
     {
@@ -86,7 +86,7 @@ class PedidoHandler
         $params = array($_SESSION['idPedido']);
         return Database::getRows($sql, $params);
     }
-
+ 
     // Método para finalizar un pedido por parte del cliente.
     public function finishOrder()
     {
@@ -97,7 +97,7 @@ class PedidoHandler
         $params = array($this->estado, $_SESSION['idPedido']);
         return Database::executeRow($sql, $params);
     }
-
+ 
     // Método para actualizar la cantidad de un producto agregado al carrito de compras.
     public function updateDetail()
     {
@@ -107,7 +107,7 @@ class PedidoHandler
         $params = array($this->cantidad, $this->id_detalle, $_SESSION['idPedido']);
         return Database::executeRow($sql, $params);
     }
-
+ 
     // Método para eliminar un producto que se encuentra en el carrito de compras.
     public function deleteDetail()
     {
@@ -116,7 +116,7 @@ class PedidoHandler
         $params = array($this->id_detalle, $_SESSION['idPedido']);
         return Database::executeRow($sql, $params);
     }
-
+ 
     /*
     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, and delete).
     */
@@ -132,16 +132,16 @@ class PedidoHandler
         $params = array($value);
         return Database::getRows($sql, $params);
     }
-
+ 
     public function updateRow()
     {
-        $sql = 'UPDATE pedido 
+        $sql = 'UPDATE pedido
                 SET estado_pedido = ?
                 WHERE id_pedido = ?';
         $params = array($this->estado, $this->id);
         return Database::executeRow($sql, $params);
     }
-
+ 
     public function readAll()
     {
         $sql = 'SELECT p.id_pedido,CONCAT(c.nombre_cliente," ",c.apellido_cliente) as cliente,
@@ -151,7 +151,7 @@ class PedidoHandler
         ORDER BY p.fecha_regristo_pedido DESC, p.estado_pedido DESC';
         return Database::getRows($sql);
     }
-
+ 
     public function readAllreport()
     {
         $sql = 'SELECT p.id_pedido,CONCAT(c.nombre_cliente," ",c.apellido_cliente) as cliente,
@@ -161,8 +161,8 @@ class PedidoHandler
         ORDER BY p.estado_pedido DESC';
         return Database::getRows($sql);
     }
-
-
+ 
+ 
     public function readOne()
     {
         $sql = 'SELECT p.id_pedido,CONCAT(c.nombre_cliente," ",c.apellido_cliente) as cliente,
@@ -173,10 +173,10 @@ class PedidoHandler
         $params = array($this->id);
         $data = Database::getRow($sql, $params);
         //$_SESSION['idmod'] = $data['id_modelo'];
-
+ 
         return $data;
     }
-
+ 
     /*
     *   Métodos para generar gráficos.
     */
@@ -188,12 +188,12 @@ class PedidoHandler
             ORDER BY cantidad DESC;';
         return Database::getRows($sql);
     }
-
+ 
     public function prediccionGanancia()
     {
         $sql = "WITH ventas AS (
-                SELECT 
-                    DATE_FORMAT(p.fecha_regristo_pedido, '%Y-%m') AS mes, 
+                SELECT
+                    DATE_FORMAT(p.fecha_regristo_pedido, '%Y-%m') AS mes,
                     ROUND(SUM(dp.cantidad_producto * dp.precio_producto), 2) AS ventas_mensuales,
                     CASE
                         WHEN DATE_FORMAT(p.fecha_regristo_pedido, '%m') = '01' THEN 'Enero'
@@ -218,7 +218,7 @@ class PedidoHandler
                 LIMIT 6 -- Cambia este valor según la cantidad de meses que desees mostrar
             ),
             coeficientes AS (
-                SELECT 
+                SELECT
                     COUNT(*) AS n,
                     SUM(mes_indice) AS sum_x,
                     SUM(ventas_mensuales) AS sum_y,
@@ -227,13 +227,13 @@ class PedidoHandler
                 FROM ventas
             ),
             calculos AS (
-                SELECT 
+                SELECT
                     (n * sum_xy - sum_x * sum_y) / (n * sum_xx - sum_x * sum_x) AS slope,
                     (sum_y - ((n * sum_xy - sum_x * sum_y) / (n * sum_xx - sum_x * sum_x)) * sum_x) / n AS intercept
                 FROM coeficientes
             ),
             prediccion AS (
-                SELECT 
+                SELECT
                     ROUND(c.slope * (MAX(v.mes_indice) + 1) + c.intercept, 2) AS prediccion_siguiente_mes,
                     CASE
                         WHEN DATE_FORMAT(ADDDATE(MAX(p.fecha_regristo_pedido), INTERVAL 1 MONTH), '%m') = '01' THEN 'Enero'
@@ -253,8 +253,8 @@ class PedidoHandler
                 JOIN pedido p ON DATE_FORMAT(p.fecha_regristo_pedido, '%Y-%m') = v.mes
                 CROSS JOIN calculos c
             )
-            SELECT 
-                v.mes, 
+            SELECT
+                v.mes,
                 v.ventas_mensuales,
                 v.nombre_mes,
                 p.prediccion_siguiente_mes,
@@ -263,16 +263,34 @@ class PedidoHandler
             CROSS JOIN prediccion p
             ORDER BY v.mes ASC;
  ";
-
+ 
         $params = array();
         return Database::getRows($sql, $params);
     }
-
+ 
     public function PorcentajeEstadoPedidos()
     {
         $sql = 'SELECT estado_pedido, COUNT(*) as cantidad_pedidos
                 FROM pedido
                 GROUP BY estado_pedido';
         return Database::getRows($sql);
+    }
+   
+    public function readFactura()
+    {
+        $sql = 'SELECT dp.id_detalle,
+                p.nombre_producto, m.nombre_marca, c.nombre_categoria,
+                dp.cantidad_producto, DATE_FORMAT(pe.fecha_regristo_pedido, "%h:%i %p - %e %b %Y") AS fecha,
+                CONCAT(cl.nombre_cliente, " ", cl.apellido_cliente) AS nombre_completo,
+                p.precio_producto
+                FROM detalle_pedido dp
+                INNER JOIN producto p ON dp.id_producto = p.id_producto
+                INNER JOIN pedido pe ON dp.id_pedido = pe.id_pedido
+                INNER JOIN marca m ON p.id_marca = m.id_marca
+                INNER JOIN categoria c ON p.id_categoria_hoodie = c.id_categoria_hoodie
+                INNER JOIN cliente cl ON pe.id_cliente = cl.id_cliente
+                WHERE dp.id_pedido = ?';
+        $params = array($this->id);
+        return Database::getRows($sql, $params);
     }
 }

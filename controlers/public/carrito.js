@@ -6,17 +6,18 @@ const TABLE_BODY = document.getElementById('tableBody');
 const ITEM_MODAL = new bootstrap.Modal('#itemModal');
 // Constante para establecer el formulario de cambiar producto.
 const ITEM_FORM = document.getElementById('itemForm');
-
+ 
 // Método del evento para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
     // Llamada a la función para mostrar el encabezado y pie del documento.
     loadTemplate();
+ 
     // Se establece el título del contenido principal.
     // MAIN_TITLE.textContent = 'Carrito de compras';
     // Llamada a la función para mostrar los productos del carrito de compras.
     readDetail();
 });
-
+ 
 // Método del evento para cuando se envía el formulario de cambiar cantidad de producto.
 ITEM_FORM.addEventListener('submit', async (event) => {
     // Se evita recargar la página web después de enviar el formulario.
@@ -37,7 +38,7 @@ ITEM_FORM.addEventListener('submit', async (event) => {
         sweetAlert(2, DATA.error, false);
     }
 });
-
+ 
 /*
 *   Función para obtener el detalle del carrito de compras.
 *   Parámetros: ninguno.
@@ -47,7 +48,7 @@ async function readDetail() {
     // Petición para obtener los datos del pedido en proceso.
     const DATA = await fetchData(PEDIDO_API, 'readDetail');
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
-    if (DATA.status) {  
+    if (DATA.status) {
         // Se inicializa el cuerpo de la tabla.
         TABLE_BODY.innerHTML = '';
         // Se declara e inicializa una variable para calcular el importe por cada producto.
@@ -83,7 +84,7 @@ async function readDetail() {
         sweetAlert(4, DATA.error, false, 'index.html');
     }
 }
-
+ 
 /*
 *   Función para abrir la caja de diálogo con el formulario de cambiar cantidad de producto.
 *   Parámetros: id (identificador del producto) y quantity (cantidad actual del producto).
@@ -96,7 +97,7 @@ function openUpdate(id, quantity) {
     document.getElementById('idDetalle').value = id;
     document.getElementById('cantidadProducto').value = quantity;
 }
-
+ 
 /*
 *   Función asíncrona para mostrar un mensaje de confirmación al momento de finalizar el pedido.
 *   Parámetros: ninguno.
@@ -112,12 +113,13 @@ async function finishOrder() {
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
         if (DATA.status) {
             sweetAlert(1, DATA.message, true, 'index.html');
+            openReport(DATA.dataset);
         } else {
             sweetAlert(2, DATA.error, false);
         }
     }
 }
-
+ 
 /*
 *   Función asíncrona para mostrar un mensaje de confirmación al momento de eliminar un producto del carrito.
 *   Parámetros: id (identificador del producto).
@@ -142,4 +144,15 @@ async function openDelete(id) {
             sweetAlert(2, DATA.error, false);
         }
     }
+}
+ 
+//Función para abrir un reporte automático de un registro.
+const openReport = (id) => {
+    // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
+    const PATH = new URL(`${SERVER_URL}report/public/reportes_facturas.php`);
+    // Se agrega un parámetro a la ruta con el valor del registro seleccionado.
+    PATH.searchParams.append('idPedido', id);
+    console.log(PATH);
+    // Se abre el reporte en una nueva pestaña.
+    window.open(PATH.href);
 }
