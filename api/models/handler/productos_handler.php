@@ -174,7 +174,7 @@ class ProductoHandler
     {
         $sql = 'SELECT nombre_marca, ROUND((COUNT(id_producto) * 100.0 / (SELECT COUNT(id_producto) FROM productos)), 2) porcentaje
                 FROM productos
-                INNER JOIN marcas USING(id_marca)
+                INNER JOIN marca USING(id_marca)
                 GROUP BY nombre_marca ORDER BY porcentaje DESC';
         return Database::getRows($sql);
     } 

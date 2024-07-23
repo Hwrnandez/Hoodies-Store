@@ -53,8 +53,8 @@ class PedidoHandler
         if ($this->getOrder()) {
             return true;
         } else {
-            $sql = 'INSERT INTO pedido(direccion_pedido, id_cliente)
-                    VALUES((SELECT direccion_cliente FROM cliente WHERE id_cliente = ?), ?)';
+            $sql = 'INSERT INTO pedido(direccion_pedido, fecha_regristo_pedido, id_cliente)
+                    VALUES((SELECT direccion_cliente FROM cliente WHERE id_cliente = ?),now(), ?)';
             $params = array($_SESSION['idCliente'], $_SESSION['idCliente']);
             // Se obtiene el ultimo valor insertado de la llave primaria en la tabla pedido.
             if ($_SESSION['idPedido'] = Database::getLastRow($sql, $params)) {
