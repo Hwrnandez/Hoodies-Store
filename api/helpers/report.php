@@ -71,13 +71,14 @@ class Report extends FPDF
         if (isset($_SESSION['idAdministrador'])) {
             // Si la variable de sesión está establecida, asigna su valor a $solicitud
             $solicitud = $_SESSION['usuarioEmpleado'];
+            $this->setFont('Arial', 'I', 10);
+            $this->cell(0, 10, 'Solicitado por ' . $solicitud, 0, 1, 'C');
         } elseif (isset($_SESSION['idCliente'])) {
             $solicitud = $_SESSION['usuarioCliente'];
         } else {
             $solicitud = '';
         }
-        $this->setFont('Arial', 'I', 10);
-        $this->cell(0, 10, 'Solicitado por ' . $solicitud, 0, 1, 'C');
+
         // Se agrega un salto de línea para mostrar el contenido principal del documento.
         $this->ln(7);
     }

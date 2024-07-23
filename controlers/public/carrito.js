@@ -149,7 +149,7 @@ async function openDelete(id) {
 //Función para abrir un reporte automático de un registro.
 const openReport = (id) => {
     // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
-    const PATH = new URL(`${SERVER_URL}report/public/reportes_facturas.php`);
+    const PATH = new URL(`${SERVER_URL}reports/public/reporte_factura.php`);
     // Se agrega un parámetro a la ruta con el valor del registro seleccionado.
     PATH.searchParams.append('idPedido', id);
     console.log(PATH);
