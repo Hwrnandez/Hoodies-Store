@@ -152,8 +152,9 @@ INSERT INTO cliente (nombre_cliente, apellido_cliente, telefono_cliente, direcci
 ('Daniel', 'Martínez', 8889992222, 'Calle 33, Ciudad I', true, 'daniel@example.com', 'clavefghij'),
 ('Isabella', 'Chávez', 1112223339, 'Carrera 25, Ciudad H', true, 'isabella@example.com', 'claveklmno');
 INSERT INTO pedido (estado_pedido, fecha_regristo_pedido, direccion_pedido, id_cliente) VALUES
-('Pendiente', '2024-05-01', 'Calle Sol 123, Ciudad Metrópolis', 1),
-('Finalizado', '2024-05-02', 'Avenida Luna 456, Ciudad Estrella', 2),
+('Pendiente', '2024-01-01', 'Calle Sol 123, Ciudad Metrópolis', 1),
+('Pendiente', '2024-02-01', 'Calle Sol 123, Ciudad Metrópolis', 1),
+('Finalizado', '2024-03-02', 'Avenida Luna 456, Ciudad Estrella', 2),
 ('Entregado', '2024-05-03', 'Carrera Galaxia 789, Ciudad Nebulosa', 3),
 ('Pendiente', '2024-05-04', 'Calle Espacial 321, Ciudad Cósmica', 4),
 ('Finalizado', '2024-05-05', 'Avenida Saturno 654, Ciudad Interplanetaria', 5),
@@ -164,11 +165,27 @@ INSERT INTO pedido (estado_pedido, fecha_regristo_pedido, direccion_pedido, id_c
 ('Pendiente', '2024-05-10', 'Calle Júpiter 135, Ciudad Nebulosa', 10),
 ('Finalizado', '2024-05-11', 'Avenida Venus 468, Ciudad Metrópolis', 11),
 ('Entregado', '2024-05-12', 'Carrera Tierra 791, Ciudad Estrella', 12),
-('Pendiente', '2024-05-13', 'Calle Urano 234, Ciudad Cósmica', 13),
-('Finalizado', '2024-05-14', 'Avenida Neptuno 567, Ciudad Interplanetaria', 14),
-('Entregado', '2024-05-15', 'Carrera Marte 890, Ciudad Celestial', 15),
+('Pendiente', '2024-04-13', 'Calle Urano 234, Ciudad Cósmica', 13),
+('Finalizado', '2024-04-14', 'Avenida Neptuno 567, Ciudad Interplanetaria', 14),
+('Entregado', '2024-04-15', 'Carrera Marte 890, Ciudad Celestial', 15),
 ('Pendiente', '2024-05-16', 'Calle Saturno 321, Ciudad Astral', 16),
 ('Finalizado', '2024-05-17', 'Avenida Mercurio 654, Ciudad Galáctica', 17),
 ('Entregado', '2024-05-18', 'Carrera Plutón 987, Ciudad Universal', 18),
 ('Pendiente', '2024-05-19', 'Calle Júpiter 210, Ciudad Nebulosa', 19);
- 
+
+            
+
+				INSERT INTO detalle_pedido(id_producto, precio_producto, cantidad_producto, id_pedido)
+                VALUES(3, (SELECT precio_producto FROM producto WHERE id_producto = 3), 2, 1);
+                INSERT INTO detalle_pedido(id_producto, precio_producto, cantidad_producto, id_pedido)
+                VALUES(4, (SELECT precio_producto FROM producto WHERE id_producto = 4), 2, 2);
+                INSERT INTO detalle_pedido(id_producto, precio_producto, cantidad_producto, id_pedido)
+                VALUES(3, (SELECT precio_producto FROM producto WHERE id_producto = 3), 2, 3);
+                INSERT INTO detalle_pedido(id_producto, precio_producto, cantidad_producto, id_pedido)
+                VALUES(4, (SELECT precio_producto FROM producto WHERE id_producto = 4), 2, 4);
+                INSERT INTO detalle_pedido(id_producto, precio_producto, cantidad_producto, id_pedido)
+                VALUES(4, (SELECT precio_producto FROM producto WHERE id_producto = 4), 2, 5);
+                INSERT INTO detalle_pedido(id_producto, precio_producto, cantidad_producto, id_pedido)
+                VALUES(3, (SELECT precio_producto FROM producto WHERE id_producto = 3), 2, 6);
+
+            
