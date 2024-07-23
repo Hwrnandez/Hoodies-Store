@@ -123,7 +123,7 @@ const graficaGanancias = async () => {
         mes.push(DATA.dataset[0].nombre_siguiente_mes);
         ganancia.push(DATA.dataset[0].prediccion_siguiente_mes);
         // Llamada a la función para generar y mostrar un gráfico de barras. Se encuentra en el archivo components.js
-        areaGraph('chart5', mes, ganancia, 'Ganancias $', 'Mes', 'Predicción de ganancia por mes');
+        areaGraph('chart5', mes, ganancia, 'Predicción de ganancia por mes $');
     } else {
         document.getElementById('chart5').remove();
         console.log(DATA.error);
