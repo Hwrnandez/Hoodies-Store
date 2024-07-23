@@ -22,7 +22,7 @@ class AdministradorHandler
      */
     public function checkUser($username, $password)
 {
-    $sql = 'SELECT id_administrador, correo_administrador, clave_administrador
+    $sql = 'SELECT id_administrador, correo_administrador, clave_administrador, nombre_administrador
             FROM administrador
             WHERE  correo_administrador = ?';
     $params = array($username);
@@ -30,6 +30,7 @@ class AdministradorHandler
     if ($data && password_verify($password, $data['clave_administrador'])) {
         $_SESSION['idAdministrador'] = $data['id_administrador'];
         $_SESSION['usuarioAdmin'] = $data['correo_administrador'];
+        $_SESSION['usuarioEmpleado'] = $data['nombre_administrador'];
         return true;
     } else {
         return false;
