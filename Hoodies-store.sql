@@ -187,5 +187,3 @@ INSERT INTO pedido (estado_pedido, fecha_regristo_pedido, direccion_pedido, id_c
                 VALUES(4, (SELECT precio_producto FROM producto WHERE id_producto = 4), 2, 5);
                 INSERT INTO detalle_pedido(id_producto, precio_producto, cantidad_producto, id_pedido)
                 VALUES(3, (SELECT precio_producto FROM producto WHERE id_producto = 3), 2, 6);
-
-            
