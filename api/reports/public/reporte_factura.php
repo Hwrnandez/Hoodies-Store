@@ -27,7 +27,7 @@ if ($pedido->setId($_GET['idPedido'])) {
         // Se verifica si existen registros para mostrar, de lo contrario se imprime un mensaje.
         if ($dataP = $pedido->readFactura()) {
             // Se establece un color de relleno para los encabezados.
-            $pdf->setFillColor(204, 200, 170);
+            $pdf->setFillColor(154, 173, 233);
             // Se establece la fuente para los encabezados.
             $pdf->setFont('Arial', 'B', 11);
             // Se imprimen las celdas con los encabezados.
